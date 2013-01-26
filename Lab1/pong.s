@@ -112,10 +112,51 @@ main:
     li    $a0, 0x6        # c = 110 = yellow
     jal   write_byte
 
+    li $s0, 10            # x pos of ball
+    li $s1, 10            # y pos of ball
+    li $s2, 1             # x_velocity
+    li $s3, 1             # y_velocity
+
+# initialize ball
+    add $a0, $s0, $zero
+    jal write_byte
+    add $a0, $s1, $zero
+    jal write_byte
+    li $a0, 0x4
+    jal write_byte
+
+
+# paddle
+    
 
 game_loop:
 
+  addi $sp, $sp, -4
+  sw $ra, 0($sp)     # not necessary
+  jal moveBall
+  lw $ra, 0($sp)
+  addi $sp, $sp, 4
+
+  # counter
+  addi $t1, $zero, 1023
+counterLoop:
+  addi $t1, $t1, -1
+  bne $t1, $zero, counterLoop
+    
+
 # GAME CODE GOES HERE
+  # Pseudo
+  # seed paddle and ball in initial position
+  # initialize v_x and v_y
+  # if (hits left / right wall)
+         # v_x = -v_x
+  # if (hits top or bottom wall)
+         # v_y = -v_y
+  # update image of ball
+  # update image of paddle
+         # paddle will always track the y position of the ball
+  # countdown loop
+  # loop
 
 # some things you need to do:
 # draw on top of the old ball and paddle to erase them
@@ -129,7 +170,7 @@ game_loop:
 # the implementation is below
 
     # uncomment this to loop through your game code
-    #j     game_loop
+    j     game_loop
 
 # send the exit signal to the display and make an exit syscall in SPIM
 # this stops the Python Tk display and SPIM safely
@@ -163,3 +204,23 @@ poll_for_ready:
     blez  $t9, poll_for_ready
     sw    $a0, 4($t8)
     jr    $ra
+
+# moving the ball
+moveBall:
+    addi $sp, $sp, -4
+    sw $ra, 0($sp)
+    add $a0, $s0, $zero
+    jal write_byte
+    add $a0, $s1, $zero
+    jal write_byte
+    li $a0, 0
+    jal write_byte        # draw over previous position
+    add $a0, $s0, $s2
+    jal write_byte        # add v_x to x
+    add $a0, $s1, $s3
+    jal write_byte        # add v_y to y
+    li $a0, 0x4
+    jal write_byte        # add color
+    lw $ra, 0($sp)
+    addi $sp, $sp, 4
+    jr $ra
