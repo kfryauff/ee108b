@@ -84,38 +84,11 @@ main:
     li    $t0, 6          # paddle height
     sw    $t0, 24($sp)
 
-# this is an example of proper use of the display protocol
-# remove this code once you have implemented basic drawing
-# functionality for the paddle and ball
-    li    $a0, 0          # x = 0
-    jal   write_byte
-    li    $a0, 0          # y = 0
-    jal   write_byte
-    li    $a0, 0x4        # c = 100 = red
-    jal   write_byte
-    li    $a0, 39         # x = 39
-    jal   write_byte
-    li    $a0, 29         # y = 29
-    jal   write_byte
-    li    $a0, 0x1        # c = 001 = blue
-    jal   write_byte
-    li    $a0, 0          # x = 0
-    jal   write_byte
-    li    $a0, 29         # y = 29
-    jal   write_byte
-    li    $a0, 0x2        # c = 010 = green
-    jal   write_byte
-    li    $a0, 39         # x = 39
-    jal   write_byte
-    li    $a0, 0          # y = 0
-    jal   write_byte
-    li    $a0, 0x6        # c = 110 = yellow
-    jal   write_byte
 
     li $s0, 10            # x pos of ball
     li $s1, 10            # y pos of ball
     li $s2, 1             # x_velocity
-    li $s3, 1             # y_velocity
+    li $s3, -1             # y_velocity
 
 # initialize ball
     add $a0, $s0, $zero
@@ -125,9 +98,20 @@ main:
     li $a0, 0x4
     jal write_byte
 
+    li $s4, 5              #paddle x pos
+    li $s5, 5              #paddle y pos
 
-# paddle
-    
+# intialize paddle
+    lw    $t1, 24($sp)    #paddle length
+paddle_loop:
+    add $a0, $s4, $zero   # x pos of paddle
+    jal write_byte
+    add $a0, $s1, $t1     # current y pos of paddle 
+    jal write_byte
+    li $a0, 0x2       # paddle colour
+    jal write_byte
+    addi $t1, $t1, -1
+    bne $t1, $zero, paddle_loop
 
 game_loop:
 
@@ -138,7 +122,7 @@ game_loop:
   addi $sp, $sp, 4
 
   # counter
-  addi $t1, $zero, 32767
+  addi $t1, $zero, 1000000 #32767
 counterLoop:
   addi $t1, $t1, -1
   bne $t1, $zero, counterLoop
@@ -147,19 +131,14 @@ counterLoop:
   lw $t0, 0($sp)
   ble $t0, $s0, REVERSE_X    # if position past right wall
 TOP_WALL:
+  addi $t1, $zero, 0
   move $t0, $zero
   ble $s1, $t0, REVERSE_Y    # if position past top wall
 BOTTOM_WALL:
-  addi $t1, $t1, 1           # flag for running BOTTOM_WALL case
+  addi $t1, $zero, 1           # flag for running BOTTOM_WALL case
   lw $t0, 4($sp)
   ble $t0, $s1, REVERSE_Y    # if position past bottom wall
-
-REVERSE_X:
-  neg $s2, $s2
-  j TOP_WALL
-REVERSE_Y:
-  neg $s3, $s3
-  beq $t1, $zero, BOTTOM_WALL
+CONTINUE:
 # GAME CODE GOES HERE
   # Pseudo
   # seed paddle and ball in initial position
@@ -242,3 +221,12 @@ moveBall:
     lw $ra, 0($sp)
     addi $sp, $sp, 4
     jr $ra
+
+
+REVERSE_X:
+  neg $s2, $s2
+  j TOP_WALL
+REVERSE_Y:
+  neg $s3, $s3
+  beq $t1, $zero, BOTTOM_WALL
+  j CONTINUE
