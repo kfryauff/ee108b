@@ -138,12 +138,28 @@ game_loop:
   addi $sp, $sp, 4
 
   # counter
-  addi $t1, $zero, 1023
+  addi $t1, $zero, 32767
 counterLoop:
   addi $t1, $t1, -1
   bne $t1, $zero, counterLoop
-    
 
+  # hitting walls
+  lw $t0, 0($sp)
+  ble $t0, $s0, REVERSE_X    # if position past right wall
+TOP_WALL:
+  move $t0, $zero
+  ble $s1, $t0, REVERSE_Y    # if position past top wall
+BOTTOM_WALL:
+  addi $t1, $t1, 1           # flag for running BOTTOM_WALL case
+  lw $t0, 4($sp)
+  ble $t0, $s1, REVERSE_Y    # if position past bottom wall
+
+REVERSE_X:
+  neg $s2, $s2
+  j TOP_WALL
+REVERSE_Y:
+  neg $s3, $s3
+  beq $t1, $zero, BOTTOM_WALL
 # GAME CODE GOES HERE
   # Pseudo
   # seed paddle and ball in initial position
@@ -215,10 +231,12 @@ moveBall:
     jal write_byte
     li $a0, 0
     jal write_byte        # draw over previous position
-    add $a0, $s0, $s2
-    jal write_byte        # add v_x to x
-    add $a0, $s1, $s3
-    jal write_byte        # add v_y to y
+    add $s0, $s0, $s2     # add v_x to x
+    add $a0, $s0, $zero
+    jal write_byte        # move ball in x
+    add $s1, $s1, $s3     # add v_y to y
+    add $a0, $s1, $zero
+    jal write_byte        # move ball in y
     li $a0, 0x4
     jal write_byte        # add color
     lw $ra, 0($sp)
