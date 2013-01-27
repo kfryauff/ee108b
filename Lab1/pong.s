@@ -98,17 +98,19 @@ main:
     li $a0, 0x4
     jal write_byte
 
-    li $s4, 5              #paddle x pos
+    li $s4, 2              #paddle x pos
     li $s5, 5              #paddle y pos
 
 # intialize paddle
-    lw    $t1, 24($sp)    #paddle length
+    
+
+    lw    $t1, 24($sp)     # paddle length
 paddle_loop:
-    add $a0, $s4, $zero   # x pos of paddle
+    add $a0, $s4, $zero    # x pos of paddle
     jal write_byte
-    add $a0, $s1, $t1     # current y pos of paddle 
+    add $a0, $s1, $t1      # current y pos of paddle 
     jal write_byte
-    li $a0, 0x2       # paddle colour
+    li $a0, 0x2            # paddle colour
     jal write_byte
     addi $t1, $t1, -1
     bne $t1, $zero, paddle_loop
@@ -122,23 +124,27 @@ game_loop:
   addi $sp, $sp, 4
 
   # counter
-  addi $t1, $zero, 1000000 #32767
+  addi $t1, $zero, 100000 #32767 #
 counterLoop:
   addi $t1, $t1, -1
   bne $t1, $zero, counterLoop
 
   # hitting walls
   lw $t0, 0($sp)
-  ble $t0, $s0, REVERSE_X    # if position past right wall
-TOP_WALL:
-  addi $t1, $zero, 0
-  move $t0, $zero
-  ble $s1, $t0, REVERSE_Y    # if position past top wall
+  ble $t0, $s0, REVERSE_X    # if x pos past right wall
 BOTTOM_WALL:
-  addi $t1, $zero, 1           # flag for running BOTTOM_WALL case
+  move $t1, $zero            # flag for running TOP_WALL case
   lw $t0, 4($sp)
-  ble $t0, $s1, REVERSE_Y    # if position past bottom wall
-CONTINUE:
+  ble $t0, $s1, REVERSE_Y    # if y pos past bottom wall
+TOP_WALL:
+  addi $t1, $t1, 1           # flag for running LEFT_WALL case
+  move $t0, $zero
+  ble $s1, $t0, REVERSE_Y    # if y pos past top wall
+LEFT_WALL:
+  ble $s0, $t0, end_the_game # if x pos past left wall, game over
+
+  # paddle tracks y-pos of ball
+  
 # GAME CODE GOES HERE
   # Pseudo
   # seed paddle and ball in initial position
@@ -225,8 +231,10 @@ moveBall:
 
 REVERSE_X:
   neg $s2, $s2
-  j TOP_WALL
+  j BOTTOM_WALL
 REVERSE_Y:
   neg $s3, $s3
-  beq $t1, $zero, BOTTOM_WALL
-  j CONTINUE
+  beq $t1, $zero, TOP_WALL
+  j LEFT_WALL
+
+
