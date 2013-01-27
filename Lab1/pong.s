@@ -139,16 +139,16 @@ game_loop:
     addi $sp, $sp, 4
 
   # counter
-  addi $t1, $zero, 50000 #32767 #
+  addi $t1, $zero, 70000 #32767 #
 counterLoop:
   addi $t1, $t1, -1
   bne $t1, $zero, counterLoop
 
   # hitting walls
+  move $t1, $zero            # flag for running TOP_WALL and BOTTOM_WALL cases
   lw $t0, 0($sp)
   ble $t0, $s0, REVERSE_X    # if x pos past right wall
 BOTTOM_WALL:
-  move $t1, $zero            # flag for running TOP_WALL case
   lw $t0, 4($sp)
   ble $t0, $s1, REVERSE_Y    # if y pos past bottom wall
 TOP_WALL:
@@ -158,6 +158,9 @@ TOP_WALL:
 LEFT_WALL:
   ble $s0, $t0, end_the_game # if x pos past left wall, game over
 
+# hitting paddle
+  beq $s0, $s4, CHECK_PADDLE
+CONTINUE:
 # some things you need to do:
 # draw on top of the old ball and paddle to erase them
 # determine the new positions of the ball and paddle
@@ -272,10 +275,22 @@ MOVE_DOWN:
 
 REVERSE_X:
   neg $s2, $s2
-  j BOTTOM_WALL
+  beq $t1, $zero, BOTTOM_WALL
+  j CONTINUE
 REVERSE_Y:
   neg $s3, $s3
   beq $t1, $zero, TOP_WALL
   j LEFT_WALL
 
-
+CHECK_PADDLE:
+  # define paddle area
+  addi $t2, $s5, -2           # upper bound
+  slt $t3, $t2, $s1           # if ball y pos is above paddle, ignore
+  beq $t3, $zero, IGNORE
+  addi $t2, $s5, 3            # lower bound
+  slt $t3, $s1, $t2           # if ball y pos is below paddle, ignore
+  beq $t3, $zero, IGNORE
+  j REVERSE_X
+IGNORE:
+  j CONTINUE
+  # if y pos in paddle area, reverse x
