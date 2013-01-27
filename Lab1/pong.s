@@ -102,11 +102,26 @@ main:
     li $s5, 5              #paddle y pos
 
 # intialize paddle
-    addi $sp, $sp, -4
-    sw $ra, 0($sp)
-    jal paddle_draw
-    lw $ra, 0($sp)
-    addi $sp, $sp, 4
+    lw    $t0, 24($sp)     # paddle length - we have added 4 to 24  because of
+                           # shifting $sp
+    sra $t1, $t0, 1        # shift right arithmetic to divide by 2
+    add $s5, $s1, $zero    # current y pos of paddle follows ball
+paddle_loop:
+    add $a0, $s4, $zero    # x pos of paddle
+    jal write_byte 
+    add $a0, $s5, $t1      # y pos of paddle (first half)
+    jal write_byte
+    li $a0, 0x2            # paddle colour
+    jal write_byte
+    add $a0, $s4, $zero    # x pos of paddle
+    jal write_byte
+    addi $t2, $t1, -1
+    sub $a0, $s5, $t2      # y pos of paddle (other half)
+    jal write_byte
+    li $a0, 0x2            # paddle colour
+    jal write_byte
+    addi $t1, $t1, -1
+    bne $t1, $zero, paddle_loop
 
 game_loop:
 
@@ -209,32 +224,48 @@ moveBall:
     addi $sp, $sp, 4
     jr $ra
 
+
 paddle_draw:
-    lw    $t1, 28($sp)     # paddle length - we have added 4 to 24  because of
+    lw    $t0, 28($sp)     # paddle length - we have added 4 to 24  because of
                            # shifting $sp
+    sra $t1, $t0, 1        # shift right arithmetic to divide by 2
     addi $sp, $sp, -4      # another stack because of write_byte
     sw $ra, 0($sp)
-paddle_erase_loop:
-    add $a0, $s4, $zero    # x pos of paddle
+
+    slt $t2, $s3, $zero          # if v_y < 0 (moving up)
+    beq $t2, $zero, MOVE_DOWN    # if v_y > 0 (moving down)
+# Paddle moving up
+    addi $t2, $s5, 3             # delete 3 below old y pos
+    add $a0, $s4, $zero
     jal write_byte
-    add $a0, $s5, $t1      # old y pos of paddle
+    add $a0, $t2, $zero
     jal write_byte
     li $a0, 0
-    jal write_byte        # draw over previous position
-    addi $t1, $t1, -1
-    bne $t1, $zero, paddle_erase_loop
-
-    add $s5, $s1, $zero    # current y pos of paddle follows ball
-    lw $t1, 32($sp)        # add another 4 to 24 + 4 because of shifting $sp
-paddle_loop:
-    add $a0, $s4, $zero    # x pos of paddle
-    jal write_byte 
-    add $a0, $s5, $t1      # y pos of paddle
     jal write_byte
-    li $a0, 0x2            # paddle colour
+    addi $t2, $s5, -3            # add 3 above old y pos
+    add $a0, $s4, $zero
     jal write_byte
-    addi $t1, $t1, -1
-    bne $t1, $zero, paddle_loop
+    add $a0, $t2, $zero
+    jal write_byte
+    li $a0, 0x2
+    jal write_byte
+    move $s5, $s1                # update y pos
+MOVE_DOWN:
+    move $s5, $s1                # update y pos
+    addi $t2, $s5, -3             # delete 3 above old y pos
+    add $a0, $s4, $zero
+    jal write_byte
+    add $a0, $t2, $zero
+    jal write_byte
+    li $a0, 0
+    jal write_byte
+    addi $t2, $s5, 3             # add 3 below  old y pos
+    add $a0, $s4, $zero
+    jal write_byte
+    add $a0, $t2, $zero
+    jal write_byte
+    li $a0, 0x2
+    jal write_byte
     lw $ra, 0($sp)
     addi $sp, $sp, 4
     jr $ra
