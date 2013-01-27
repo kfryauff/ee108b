@@ -102,18 +102,11 @@ main:
     li $s5, 5              #paddle y pos
 
 # intialize paddle
-    
-
-    lw    $t1, 24($sp)     # paddle length
-paddle_loop:
-    add $a0, $s4, $zero    # x pos of paddle
-    jal write_byte
-    add $a0, $s1, $t1      # current y pos of paddle 
-    jal write_byte
-    li $a0, 0x2            # paddle colour
-    jal write_byte
-    addi $t1, $t1, -1
-    bne $t1, $zero, paddle_loop
+    addi $sp, $sp, -4
+    sw $ra, 0($sp)
+    jal paddle_draw
+    lw $ra, 0($sp)
+    addi $sp, $sp, 4
 
 game_loop:
 
@@ -123,8 +116,15 @@ game_loop:
   lw $ra, 0($sp)
   addi $sp, $sp, 4
 
+  # paddle tracks y-pos of ball
+    addi $sp, $sp, -4
+    sw $ra, 0($sp)
+    jal paddle_draw
+    lw $ra, 0($sp)
+    addi $sp, $sp, 4
+
   # counter
-  addi $t1, $zero, 100000 #32767 #
+  addi $t1, $zero, 50000 #32767 #
 counterLoop:
   addi $t1, $t1, -1
   bne $t1, $zero, counterLoop
@@ -143,29 +143,10 @@ TOP_WALL:
 LEFT_WALL:
   ble $s0, $t0, end_the_game # if x pos past left wall, game over
 
-  # paddle tracks y-pos of ball
-  
-# GAME CODE GOES HERE
-  # Pseudo
-  # seed paddle and ball in initial position
-  # initialize v_x and v_y
-  # if (hits left / right wall)
-         # v_x = -v_x
-  # if (hits top or bottom wall)
-         # v_y = -v_y
-  # update image of ball
-  # update image of paddle
-         # paddle will always track the y position of the ball
-  # countdown loop
-  # loop
-
 # some things you need to do:
 # draw on top of the old ball and paddle to erase them
 # determine the new positions of the ball and paddle
 # draw the ball and paddle again
-
-# pause for some number of instructions so that the game is playable/observable
-# (make a count-down loop from some number, experiment with different numbers)
 
 # this will exit SPIM and stop the display from asking for more output
 # the implementation is below
@@ -228,6 +209,35 @@ moveBall:
     addi $sp, $sp, 4
     jr $ra
 
+paddle_draw:
+    lw    $t1, 28($sp)     # paddle length - we have added 4 to 24  because of
+                           # shifting $sp
+    addi $sp, $sp, -4      # another stack because of write_byte
+    sw $ra, 0($sp)
+paddle_erase_loop:
+    add $a0, $s4, $zero    # x pos of paddle
+    jal write_byte
+    add $a0, $s5, $t1      # old y pos of paddle
+    jal write_byte
+    li $a0, 0
+    jal write_byte        # draw over previous position
+    addi $t1, $t1, -1
+    bne $t1, $zero, paddle_erase_loop
+
+    add $s5, $s1, $zero    # current y pos of paddle follows ball
+    lw $t1, 32($sp)        # add another 4 to 24 + 4 because of shifting $sp
+paddle_loop:
+    add $a0, $s4, $zero    # x pos of paddle
+    jal write_byte 
+    add $a0, $s5, $t1      # y pos of paddle
+    jal write_byte
+    li $a0, 0x2            # paddle colour
+    jal write_byte
+    addi $t1, $t1, -1
+    bne $t1, $zero, paddle_loop
+    lw $ra, 0($sp)
+    addi $sp, $sp, 4
+    jr $ra
 
 REVERSE_X:
   neg $s2, $s2
