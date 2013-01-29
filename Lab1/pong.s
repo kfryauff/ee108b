@@ -132,12 +132,18 @@ game_loop:
   addi $sp, $sp, 4
 
   # paddle tracks y-pos of ball
-    addi $sp, $sp, -4
+  li $t0, 1                 # check if ball is at the top
+  slt $t0, $t0, $s1
+  beq $t0, $zero, SKIP
+  li $t0, 27                # check if ball is at the bottom
+  slt $t0, $s1, $t0
+  beq $t0, $zero, SKIP
+    addi $sp, $sp, -4       # if ball not at top/bottom edges, move paddle
     sw $ra, 0($sp)
     jal paddle_draw
     lw $ra, 0($sp)
     addi $sp, $sp, 4
-
+SKIP:
   # counter
   addi $t1, $zero, 70000 #32767 #
 counterLoop:
@@ -246,6 +252,7 @@ paddle_draw:
     jal write_byte
     li $a0, 0
     jal write_byte
+
     addi $t2, $s5, -3            # add 3 above old y pos
     add $a0, $s4, $zero
     jal write_byte
@@ -254,22 +261,25 @@ paddle_draw:
     li $a0, 0x2
     jal write_byte
     move $s5, $s1                # update y pos
+    j RETURN
 MOVE_DOWN:
-    move $s5, $s1                # update y pos
-    addi $t2, $s5, -3             # delete 3 above old y pos
+    addi $t2, $s5, -2             # delete 3 above new y pos
     add $a0, $s4, $zero
     jal write_byte
     add $a0, $t2, $zero
     jal write_byte
     li $a0, 0
     jal write_byte
-    addi $t2, $s5, 3             # add 3 below  old y pos
+
+    addi $t2, $s5, 4             # add 3 below new y pos
     add $a0, $s4, $zero
     jal write_byte
     add $a0, $t2, $zero
     jal write_byte
     li $a0, 0x2
     jal write_byte
+    move $s5, $s1                # update y pos
+RETURN:
     lw $ra, 0($sp)
     addi $sp, $sp, 4
     jr $ra
