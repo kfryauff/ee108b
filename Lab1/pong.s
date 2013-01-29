@@ -145,7 +145,7 @@ game_loop:
     addi $sp, $sp, 4
 SKIP:
   # counter
-  addi $t1, $zero, 70000 #32767 #
+  addi $t1, $zero, 32767 #
 counterLoop:
   addi $t1, $t1, -1
   bne $t1, $zero, counterLoop
