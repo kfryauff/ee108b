@@ -159,7 +159,8 @@ LEFT_WALL:
   ble $s0, $t0, end_the_game # if x pos past left wall, game over
 
 # hitting paddle
-  beq $s0, $s4, CHECK_PADDLE
+  addi $t0, $s4, 1           # this is so the ball doesn't go over the paddle
+  beq $s0, $t0, CHECK_PADDLE
 CONTINUE:
 # some things you need to do:
 # draw on top of the old ball and paddle to erase them
