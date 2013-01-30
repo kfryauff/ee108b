@@ -1,7 +1,7 @@
 # EE108B Lab 1
 
-# Name of Group Member 1 (your_sunet_id@stanford.edu)
-# Name of Group Member 2 (your_sunet_id@stanford.edu)
+# Darren Hau (dhau@stanford.edu)
+# Krista Fryauff (kfryauff@stanford.edu
 
 # This is the starter code for EE 108B Lab 1
 # Winter 2013, Stanford University
