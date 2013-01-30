@@ -100,6 +100,7 @@ main:
 
     li $s4, 2              #paddle x pos
     li $s5, 5              #paddle y pos
+    li $s6, 0              # paddle y_vel
 
 # intialize paddle
     lw    $t0, 24($sp)     # paddle length - we have added 4 to 24  because of
@@ -124,28 +125,13 @@ paddle_loop:
     bne $t1, $zero, paddle_loop
 
 game_loop:
-
-  addi $sp, $sp, -4
-  sw $ra, 0($sp)     # not necessary
   jal moveBall
-  lw $ra, 0($sp)
-  addi $sp, $sp, 4
 
-  # paddle tracks y-pos of ball
-  li $t0, 1                 # check if ball is at the top
-  slt $t0, $t0, $s1
-  beq $t0, $zero, SKIP
-  li $t0, 27                # check if ball is at the bottom
-  slt $t0, $s1, $t0
-  beq $t0, $zero, SKIP
-    addi $sp, $sp, -4       # if ball not at top/bottom edges, move paddle
-    sw $ra, 0($sp)
-    jal paddle_draw
-    lw $ra, 0($sp)
-    addi $sp, $sp, 4
+  jal read_byte
+
 SKIP:
   # counter
-  addi $t1, $zero, 32767 #
+  addi $t1, $zero, 100000 #32767 #
 counterLoop:
   addi $t1, $t1, -1
   bne $t1, $zero, counterLoop
@@ -212,6 +198,35 @@ poll_for_ready:
     sw    $a0, 4($t8)
     jr    $ra
 
+read_byte:
+  la $t8, 0xffff0000
+# no loop
+  addi $sp, $sp, -4
+  sw $ra, 0($sp)
+
+  lw $t9, 0($t8)
+  andi $t9, $t9, 1    # is data ready?
+  blez $t9, RET       # if not, just return - no loop to avoid holding up
+  lw $a1, 4($t8)      # load read data
+  move $s6, $zero     # default not moving
+
+  li $t9, 115
+  beq $a1, $t9, DOWN
+  li $t9, 119
+  bne $a1, $t9, RET
+UP:
+  addi $s6, $zero, 1     # default for moving up
+  jal paddle_draw
+  j RET
+DOWN:
+  addi $s6, $zero, -1    # move down
+  jal paddle_draw
+
+RET:
+  lw $ra, 0($sp)
+  addi $sp, $sp, 4
+  jr $ra
+
 # moving the ball
 moveBall:
     addi $sp, $sp, -4
@@ -242,8 +257,14 @@ paddle_draw:
     addi $sp, $sp, -4      # another stack because of write_byte
     sw $ra, 0($sp)
 
-    slt $t2, $s3, $zero          # if v_y < 0 (moving up)
+    beq $s6, $zero, RETURN       # if not moving
+    slt $t2, $zero, $s6          # if v_y < 0 (moving up)
     beq $t2, $zero, MOVE_DOWN    # if v_y > 0 (moving down)
+
+  # paddle tracks y-pos of ball
+  li $t0, 2                 # check if ball is at the top
+  slt $t0, $t0, $s5
+  beq $t0, $zero, RETURN
 # Paddle moving up
     addi $t2, $s5, 3             # delete 3 below old y pos
     add $a0, $s4, $zero
@@ -260,9 +281,13 @@ paddle_draw:
     jal write_byte
     li $a0, 0x2
     jal write_byte
-    move $s5, $s1                # update y pos
+    addi $s5, $s5, -1                # update y pos
     j RETURN
 MOVE_DOWN:
+   li $t0, 26                # check if ball is at the bottom
+  slt $t0, $s5, $t0
+  beq $t0, $zero, RETURN
+
     addi $t2, $s5, -2             # delete 3 above new y pos
     add $a0, $s4, $zero
     jal write_byte
@@ -278,7 +303,7 @@ MOVE_DOWN:
     jal write_byte
     li $a0, 0x2
     jal write_byte
-    move $s5, $s1                # update y pos
+    addi $s5, $s5, 1                # update y pos
 RETURN:
     lw $ra, 0($sp)
     addi $sp, $sp, 4
