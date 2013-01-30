@@ -1,7 +1,7 @@
 # EE108B Lab 1
 
 # Darren Hau (dhau@stanford.edu)
-# Krista Fryauff (kfryauff@stanford.edu
+# Krista Fryauff (kfryauff@stanford.edu)
 
 # This is the starter code for EE 108B Lab 1
 # Winter 2013, Stanford University
@@ -131,7 +131,7 @@ game_loop:
 
 SKIP:
   # counter
-  addi $t1, $zero, 100000 #32767 #
+  li $t1, 100000
 counterLoop:
   addi $t1, $t1, -1
   bne $t1, $zero, counterLoop
