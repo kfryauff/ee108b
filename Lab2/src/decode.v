@@ -132,7 +132,7 @@ module decode (
     // TODO: assert this signal high when the instruction writes to a register
     // Of the three instructions the starter code supports, only sw doesn't
     // write to a register.
-    assign reg_write_en = op != `SW;
+    assign reg_write_en = &{op != `SW, op != `BEQ, op != `BNE, op != `BLEZ, op != `BGTZ, op != `BLTZ_GEZ, op != `J, op != `JAL};
   
 //******************************************************************************
 // Memory control
