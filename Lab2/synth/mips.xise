@@ -15,103 +15,103 @@
   <version xil_pn:ise_version="12.2" xil_pn:schema_version="2"/>
 
   <files>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/lib/dff.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="mips_top.ucf" xil_pn:type="FILE_UCF">
+      <association xil_pn:name="Implementation"/>
+    </file>
+    <file xil_pn:name="../src/alu.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/lib/dffar.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/brute_force_synchronizer.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/lib/dffare.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/button_press_unit.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/lib/dffr.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/chip_data_parser.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/lib/dffre.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/color_bars.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/alu.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/dataram.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/brute_force_synchronizer.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/debouncer.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/button_press_unit.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/decode.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/chip_data_parser.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/dvi_controller_top.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/color_bars.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/i2c_emulator.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/dataram.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/instruction_fetch.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/debouncer.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/irom.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/decode.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/memory_top.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/dvi_controller_top.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/mips_cpu.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/i2c_emulator.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/mips_display.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/instruction_fetch.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/mips_top.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/irom.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/one_pulse.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/memory_top.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/regfile.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/mips_cpu.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../src/sync_generators.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/mips_display.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../lib/dff.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/mips_top.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../lib/dffar.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/one_pulse.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../lib/dffare.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/regfile.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../lib/dffr.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
       <association xil_pn:name="Implementation"/>
     </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/src/sync_generators.v" xil_pn:type="FILE_VERILOG">
+    <file xil_pn:name="../lib/dffre.v" xil_pn:type="FILE_VERILOG">
       <association xil_pn:name="BehavioralSimulation"/>
-      <association xil_pn:name="Implementation"/>
-    </file>
-    <file xil_pn:name="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/synth/mips_top.ucf" xil_pn:type="FILE_UCF">
       <association xil_pn:name="Implementation"/>
     </file>
   </files>
@@ -396,14 +396,14 @@
     <property xil_pn:name="VHDL Syntax" xil_pn:value="93" xil_pn:valueState="default"/>
     <property xil_pn:name="Variables window" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Verilog 2001 Xst" xil_pn:value="true" xil_pn:valueState="default"/>
-    <property xil_pn:name="Verilog Include Directories" xil_pn:value="/afs/ir.stanford.edu/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/include" xil_pn:valueState="non-default"/>
+    <property xil_pn:name="Verilog Include Directories" xil_pn:value="../include" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Verilog Macros" xil_pn:value="" xil_pn:valueState="default"/>
     <property xil_pn:name="Wait for DCI Match (Output Events) virtex5" xil_pn:value="Auto" xil_pn:valueState="default"/>
     <property xil_pn:name="Wait for DLL Lock (Output Events) virtex5" xil_pn:value="Default (NoWait)" xil_pn:valueState="default"/>
     <property xil_pn:name="Watchdog Timer Mode virtex5" xil_pn:value="Off" xil_pn:valueState="default"/>
     <property xil_pn:name="Watchdog Timer Value virtex5" xil_pn:value="0x000000" xil_pn:valueState="default"/>
     <property xil_pn:name="Wave window" xil_pn:value="true" xil_pn:valueState="default"/>
-    <property xil_pn:name="Working Directory" xil_pn:value="/afs/ir/users/c/h/chrisnc/ee108b-ca/lab2_sol_win13/synth" xil_pn:valueState="non-default"/>
+    <property xil_pn:name="Working Directory" xil_pn:value="." xil_pn:valueState="non-default"/>
     <property xil_pn:name="Write Timing Constraints" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="XOR Collapsing" xil_pn:value="true" xil_pn:valueState="default"/>
     <!--                                                                                  -->
@@ -419,8 +419,8 @@
     <property xil_pn:name="PROP_PostXlateSimTop" xil_pn:value="" xil_pn:valueState="default"/>
     <property xil_pn:name="PROP_intProjectCreationTimestamp" xil_pn:value="2013-01-29T19:21:13" xil_pn:valueState="non-default"/>
     <property xil_pn:name="PROP_intWbtProjectID" xil_pn:value="4C4CBAEFE453A118B3A84979B62257A3" xil_pn:valueState="non-default"/>
-    <property xil_pn:name="PROP_intWorkingDirLocWRTProjDir" xil_pn:value="UnableToCalculate" xil_pn:valueState="default"/>
-    <property xil_pn:name="PROP_intWorkingDirUsed" xil_pn:value="Yes" xil_pn:valueState="non-default"/>
+    <property xil_pn:name="PROP_intWorkingDirLocWRTProjDir" xil_pn:value="Same" xil_pn:valueState="non-default"/>
+    <property xil_pn:name="PROP_intWorkingDirUsed" xil_pn:value="No" xil_pn:valueState="non-default"/>
   </properties>
 
   <bindings/>
