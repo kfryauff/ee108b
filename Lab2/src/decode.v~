@@ -76,11 +76,11 @@ module decode (
 						assign branch_en = 1'b1;
 				end
 			end
-            default:    alu_opcode = `ALU_PASSX;
+            default:    assign branch_en = 1'b0;
     	endcase
     end
 
-    assign branch_en = 1'b0;
+    //assign branch_en = 1'b0;
 
 //******************************************************************************
 // jump instructions decode
@@ -89,9 +89,21 @@ module decode (
     // TODO: check whether there is a jump or a jump to register and assert
     // jump_en or jump_reg_en high if necessary. Both j and jal should assert
     // jump_en, and both jr and jalr should assert jump_reg_en.
+    always @* begin
+        casex({op, funct})
+	    {`J, `DC6}:		jump_en = 1'b1;
+            {`J, `JR}:		jump_reg_en = 1'b1;
+            {`JAL, `DC6}:	jump_en = 1'b1;
+            {`JAL, `JALR}:	jump_reg_en = 1'b1;
+            default:    	begin
+					assign jump_en = 1'b0;
+    					assign jump_reg_en = 1'b0;
+				end
+    	endcase
+    end
 
-    assign jump_en = 1'b0;
-    assign jump_reg_en = 1'b0;
+    //assign jump_en = 1'b0;
+    //assign jump_reg_en = 1'b0;
 
 //******************************************************************************
 // shift instruction decode
@@ -195,7 +207,7 @@ module decode (
     // TODO: assert this signal high when the instruction writes to a register
     // Of the three instructions the starter code supports, only sw doesn't
     // write to a register.
-    assign reg_write_en = op != `SW;
+    assign reg_write_en = &{op != `SW, op != `J, op != `JAL, op != `BEQ, op != `BNE, op != `BLEZ, op != BGTZ, op != BLTZ_GEZ};
   
 //******************************************************************************
 // Memory control
