@@ -14,16 +14,16 @@ module irom(addr, dout);
 
   assign dout = memory[addr];
 
-  assign memory[  0] = {`ORI, `ZERO, `T0, 16'hffff};
-  assign memory[  1] = {`SPECIAL, `NULL, `T0, `T0, 5'd16, `SLL};
-  assign memory[  2] = {`ORI, `T1, `T1, 16'h2};
-  assign memory[  3] = {`SPECIAL, `NULL, `T1, `T1, 5'd16, `SLL};
-  assign memory[  4] = {`ORI, `T1, `T1, 8'd1, 8'd0};
-  assign memory[  5] = {`SW, `T0, `T1, 16'hc};		//adding color
-  assign memory[  6] = {`ORI, `T1, `T1, 8'd2, 8'd0}; 
-  assign memory[  7] = {`SW, `T0, `T1, 16'hc};
-  assign memory[  8] = {`NOP};
-  assign memory[  9] = {`NOP};
+  assign memory[  0] = {`LUI, `NULL, `T0, 16'hffff};	// address
+  assign memory[  1] = {`LUI, `NULL, `T1, 16'h2};	// data
+  assign memory[  2] = {`ORI, `T1, `T1, 8'd1, 8'd0};	// color = 8'd2, x = 8'd1, y = 8'd0
+  assign memory[  3] = {`SW, `T0, `T1, 16'hc};		// to display
+  assign memory[  4] = {`ORI, `T1, `T1, 8'd2, 8'd1}; 	// color = 8'd2, x = 8'd2, y = 8'd1
+  assign memory[  5] = {`SW, `T0, `T1, 16'hc};		// to display
+  assign memory[  6] = {`NOP};
+  assign memory[  7] = {`NOP};				// start using waveforms to verify
+  assign memory[  8] = {`LUI,`NULL, `T0, 16'd1};	// LUI - result should be T0 = 65536
+  assign memory[  9] = {`ADDI, `T0, `T1, 16'd1};	// ADD - result should be T1 = 65537
   assign memory[ 10] = {`NOP};
   assign memory[ 11] = {`NOP};
   assign memory[ 12] = {`NOP};

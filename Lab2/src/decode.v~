@@ -54,31 +54,31 @@ module decode (
         casex(op)
             `BEQ:	begin
 				if (alu_result == 32'b0)
-					assign branch_en = 1'b1;
+					branch_en = 1'b1;
 			end
             `BNE:	begin
 				if (alu_result != 32'b0)
-					assign branch_en = 1'b1;
+					branch_en = 1'b1;
 			end
 	    `BLEZ:	begin
 				if (alu_result <= 32'b0)
-					assign branch_en = 1'b1;
+					branch_en = 1'b1;
 			end
 	    `BGTZ:	begin
 				if (alu_result > 32'b0)
-					assign branch_en = 1'b1;
+					branch_en = 1'b1;
 			end
 	    `BLTZ_GEZ:	begin		// BLTZ, BGEZ, BLTZAL, BGEZAL - these are dependent on $rt
 				if (rt_addr == `BLTZ || rt_addr == `BLTZAL) begin
 					if (alu_result < 32'b0)
-						assign branch_en = 1'b1;
+						branch_en = 1'b1;
 				end
 				if (rt_addr == `BGEZ || rt_addr == `BGEZAL) begin
 					if (alu_result >= 32'b0)
-						assign branch_en = 1'b1;
+						branch_en = 1'b1;
 				end
 			end
-            default:    assign branch_en = 1'b0;
+            default:    branch_en = 1'b0;
     	endcase
     end
 
@@ -98,8 +98,8 @@ module decode (
             {`JAL, `DC6}:	jump_en = 1'b1;
             {`JAL, `JALR}:	jump_reg_en = 1'b1;
             default:    	begin
-					assign jump_en = 1'b0;
-    					assign jump_reg_en = 1'b0;
+					jump_en = 1'b0;
+    					jump_reg_en = 1'b0;
 				end
     	endcase
     end
@@ -132,7 +132,7 @@ module decode (
         casex({op, funct})					// go in order; the ones without comments are original
             {`SPECIAL, `ADD}:	alu_opcode = `ALU_ADD;		// ADD
             {`SPECIAL, `ADDU}:	alu_opcode = `ALU_ADDU;		// ADDU
-            {`ADDI, `ADD}:	alu_opcode = `ALU_ADD;		// ADDI
+            {`ADDI, `DC6}:	alu_opcode = `ALU_ADD;		// ADDI
             {`ADDIU, `ADDU}:	alu_opcode = `ALU_ADDU;		// ADDIU
             {`SPECIAL, `SUB}:	alu_opcode = `ALU_SUB;		// SUB
             {`SPECIAL, `SUBU}:	alu_opcode = `ALU_SUBU;		// SUBU
