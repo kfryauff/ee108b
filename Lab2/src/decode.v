@@ -14,9 +14,10 @@ module decode (
     input [31:0] rt_data,
 
     output wire [4:0] reg_write_addr, // destination register number
-    output wire branch_en,            // high when the instruction is a taken branch
-    output wire jump_en,              // high when the instruction is j or jal
-    output wire jump_reg_en,          // high when the instruction is jr or jalr
+    //**branch_en, jump_en, jump_reg_en changed from wires to registers
+    output reg branch_en,             // high when the instruction is a taken branch
+    output reg jump_en,              // high when the instruction is j or jal
+    output reg jump_reg_en,          // high when the instruction is jr or jalr
     output reg [3:0] alu_opcode,      // see mips_defines.v, chooses the function of the ALU
     output wire [31:0] alu_op_x,      // first operand for ALU
     output wire [31:0] alu_op_y,      // second operand for ALU
@@ -48,35 +49,36 @@ module decode (
     // checking the appropriate condition for the branch.
     // Remember that the ALU result is an input to the decode module, so you can
     // use it to evaluate the branch condition.
+
     always @* begin
         casex(op)
             `BEQ:	begin
 				if (alu_result == 32'b0)
-					assign branch_en = 1'b1;
+					branch_en = 1'b1;
 			end
             `BNE:	begin
 				if (alu_result != 32'b0)
-					assign branch_en = 1'b1;
+					branch_en = 1'b1;
 			end
 	    `BLEZ:	begin
 				if (alu_result <= 32'b0)
-					assign branch_en = 1'b1;
+					branch_en = 1'b1;
 			end
 	    `BGTZ:	begin
 				if (alu_result > 32'b0)
-					assign branch_en = 1'b1;
+					branch_en = 1'b1;
 			end
 	    `BLTZ_GEZ:	begin		// BLTZ, BGEZ, BLTZAL, BGEZAL - these are dependent on $rt
 				if (rt_addr == `BLTZ || rt_addr == `BLTZAL) begin
 					if (alu_result < 32'b0)
-						assign branch_en = 1'b1;
+						branch_en = 1'b1;
 				end
 				if (rt_addr == `BGEZ || rt_addr == `BGEZAL) begin
 					if (alu_result >= 32'b0)
-						assign branch_en = 1'b1;
+						branch_en = 1'b1;
 				end
 			end
-            default:    assign branch_en = 1'b0;
+            default:    branch_en = 1'b0;
     	endcase
     end
 
@@ -96,8 +98,8 @@ module decode (
             {`JAL, `DC6}:	jump_en = 1'b1;
             {`JAL, `JALR}:	jump_reg_en = 1'b1;
             default:    	begin
-					assign jump_en = 1'b0;
-    					assign jump_reg_en = 1'b0;
+					jump_en = 1'b0;
+    					jump_reg_en = 1'b0;
 				end
     	endcase
     end
@@ -151,7 +153,7 @@ module decode (
             {`SPECIAL, `SRLV}:	alu_opcode = `ALU_SRL;		// SRLV
             {`SPECIAL, `SRAV}:	alu_opcode = `ALU_SRA;		// SRAV
             {`SPECIAL, `SLLV}:	alu_opcode = `ALU_SLL;		// SLLV
-            {`LUI, `DC6}:	alu_opcode = `ALU_PASSY;	// LUI
+            {`LUI, `DC6}:	alu_opcode = `ALU_SLL;	        // LUI
             {`LW, `DC6}:	alu_opcode = `ALU_ADD;		// LW
             {`SW, `DC6}:        alu_opcode = `ALU_ADD;
             {`BEQ, `DC6}:	alu_opcode = `ALU_SUB;		// BEQ
@@ -179,7 +181,8 @@ module decode (
 
     reg [31:0] imm_ext;
     always @* begin
-        if (op == `ORI || op = `ANDI || op == `XORI)	// only zero-extended immediates
+        if (op == `ORI || op == `ANDI || op == `XORI)	
+	// only zero-extended immediates
             imm_ext = imm_zero_extend;
         else
             imm_ext = imm_sign_extend;
@@ -197,9 +200,10 @@ module decode (
     // otherwise use rs
 
     wire [31:0] shift_amount = {27'b0, isVarShift ? rs_data[4:0] : shamt};
-    assign alu_op_x = isShift ? shift_amount : rs_data;
+    assign alu_op_x = (op == `LUI) ? 32'd16 : (isShift ? shift_amount : rs_data);
+    
 
-    wire use_imm_operand = &{op != `SPECIAL, op != `BNE, op != `BEQ};
+    wire use_imm_operand = &{op != `SPECIAL, op != `BNE, op != `BEQ, op != `BLEZ, op != `BGTZ, op != `BLTZ_GEZ};
 
     assign alu_op_y = use_imm_operand ? imm_ext : rt_data;
     assign reg_write_addr = use_imm_operand ? rt_addr : rd_addr;
@@ -207,7 +211,8 @@ module decode (
     // TODO: assert this signal high when the instruction writes to a register
     // Of the three instructions the starter code supports, only sw doesn't
     // write to a register.
-    assign reg_write_en = &{op != `SW, op != `BEQ, op != `BNE, op != `BLEZ, op != `BGTZ, op != `BLTZ_GEZ, op != `J, op != `JAL};
+
+    assign reg_write_en = &{op != `SW, op != `J, op != `BEQ, op != `BNE, op != `BLEZ, op != `BGTZ, op != `BLTZ_GEZ};
   
 //******************************************************************************
 // Memory control

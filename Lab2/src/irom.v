@@ -19,7 +19,7 @@ module irom(addr, dout);
   assign memory[  2] = {`ORI, `T1, `T1, 16'h2};
   assign memory[  3] = {`SPECIAL, `NULL, `T1, `T1, 5'd16, `SLL};
   assign memory[  4] = {`ORI, `T1, `T1, 8'd1, 8'd0};
-  assign memory[  5] = {`SW, `T0, `T1, 16'hc};
+  assign memory[  5] = {`SW, `T0, `T1, 16'hc};		//adding color
   assign memory[  6] = {`ORI, `T1, `T1, 8'd2, 8'd0}; 
   assign memory[  7] = {`SW, `T0, `T1, 16'hc};
   assign memory[  8] = {`NOP};

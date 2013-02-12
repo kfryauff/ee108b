@@ -31,11 +31,16 @@ module instruction_fetch (
     // the bottom button is pressed on the FPGA
 
     reg [31:0] next_pc;
+    wire [31:0] dumb = {16{instr[15]}};
 
     always @*
         casex ({trap_en, branch_en, jump_en, jump_reg_en})
             4'b1xxx: next_pc = trap_pc;
             4'b0001: next_pc = jump_reg_pc;
+            4'b0010: next_pc = {pc[31:28], instr[25:0] << 2};			
+		// jump_en added
+            4'b0100: next_pc = inc_pc + ({dumb, instr[15:0]} << 2);	
+		// branch_en added, sign extend
             default: next_pc = inc_pc;
         endcase
 
