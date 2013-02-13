@@ -36,8 +36,8 @@ module alu (
 	    `ALU_OR:    alu_result = alu_op_x | alu_op_y;
 	    `ALU_NOR:	alu_result = alu_op_x ~| alu_op_y;	// new
 	    `ALU_SUBU:	alu_result = alu_op_x - alu_op_y;	// new
-	    `ALU_SLTU:	alu_result = alu_op_x - alu_op_y;	// new
-	    `ALU_SLT:	alu_result = alu_op_x - alu_op_y;	// new
+	    `ALU_SLTU:	alu_result = (alu_op_x - alu_op_y < 0) ? 1: 0;	// new
+	    `ALU_SLT:	alu_result = (alu_op_x - alu_op_y < 0) ? 1: 0;	// new
 	    `ALU_SRL:	alu_result = alu_op_y >> alu_op_x[4:0];	// new
 	    `ALU_SRA:	alu_result = alu_op_y >>> alu_op_x[4:0];// new
 	    `ALU_SLL:   alu_result = alu_op_y << alu_op_x[4:0];

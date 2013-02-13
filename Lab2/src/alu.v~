@@ -29,11 +29,22 @@ module alu (
 
     always @* begin
         case (alu_opcode)
-            // PERFORM ALU OPERATIONS DEFINED ABOVE
-            `ALU_ADD:   alu_result = alu_op_x + alu_op_y;
-            `ALU_OR:    alu_result = alu_op_x | alu_op_y;
-            `ALU_SLL:   alu_result = alu_op_y << alu_op_x[4:0]; // shift operations are Y >> X[4:0]
-            `ALU_PASSX: alu_result = alu_op_x;
+            // PERFORM ALU OPERATIONS DEFINED ABOVE		// shift operations are Y >> X[4:0]
+            `ALU_ADDU:	alu_result = alu_op_x + alu_op_y;	// new - is this same as add?
+	    `ALU_AND:	alu_result = alu_op_x & alu_op_y;	// new
+	    `ALU_XOR:	alu_result = alu_op_x ^ alu_op_y;	// new
+	    `ALU_OR:    alu_result = alu_op_x | alu_op_y;
+	    `ALU_NOR:	alu_result = alu_op_x ~| alu_op_y;	// new
+	    `ALU_SUBU:	alu_result = alu_op_x - alu_op_y;	// new
+	    `ALU_SLTU:	alu_result = alu_op_x - alu_op_y;	// new
+	    `ALU_SLT:	alu_result = (alu_op_x - alu_op_y < 0) ? 1: 0;// new
+	    `ALU_SRL:	alu_result = alu_op_y >> alu_op_x[4:0];	// new
+	    `ALU_SRA:	alu_result = alu_op_y >>> alu_op_x[4:0];// new
+	    `ALU_SLL:   alu_result = alu_op_y << alu_op_x[4:0];
+	    `ALU_PASSX: alu_result = alu_op_x;
+	    `ALU_PASSY:	alu_result = alu_op_y;			// new
+	    `ALU_ADD:   alu_result = alu_op_x + alu_op_y;
+	    `ALU_SUB:	alu_result = alu_op_x - alu_op_y;	// new
             default:    alu_result = 32'hxxxxxxxx;              // undefined
         endcase
     end

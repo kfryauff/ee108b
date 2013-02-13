@@ -22,14 +22,14 @@ module irom(addr, dout);
   assign memory[  5] = {`SW, `T0, `T1, 16'hc};		// to display
   assign memory[  6] = {`NOP};
   assign memory[  7] = {`NOP};				// start using waveforms to verify
-  assign memory[  8] = {`LUI,`NULL, `T0, 16'd1};	// LUI - result should be T0 = 65536
-  assign memory[  9] = {`ADDI, `T0, `T1, 16'd1};	// ADD - result should be T1 = 65537
-  assign memory[ 10] = {`NOP};
-  assign memory[ 11] = {`NOP};
-  assign memory[ 12] = {`NOP};
-  assign memory[ 13] = {`NOP};
-  assign memory[ 14] = {`NOP};
-  assign memory[ 15] = {`NOP};
+  assign memory[  8] = {`NOP}; //LUI,`NULL, `T0, 16'd1};	// LUI - result should be T0 = 65536
+  assign memory[  9] = {`NOP}; //ADDI, `T0, `T1, 16'd1};	// ADD - result should be T1 = 65537
+  assign memory[ 10] = {`ADDI, `ZERO, `T2, 16'b1};
+  assign memory[ 11] = {`SPECIAL, `T1, `T2, `T1, 5'b0, `SUB};
+  assign memory[ 12] = {`SW, `T0, `T1, 16'hc};
+  assign memory[ 13] = {`ADDI, `ZERO, `T2, 16'hffff};
+  assign memory[ 14] = {`SPECIAL, `T1, `T2, `T1, 5'b0, `SUB};	//T1 = T1 - T2
+  assign memory[ 15] = {`SPECIAL, `T2, `T1, `T2, 5'b0, `SLT};	//SLT T2, T2, T1
   assign memory[ 16] = {`NOP};
   assign memory[ 17] = {`NOP};
   assign memory[ 18] = {`NOP};
