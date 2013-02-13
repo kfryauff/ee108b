@@ -1,17 +1,18 @@
 [*]
 [*] GTKWave Analyzer v3.3.29 (w)1999-2012 BSI
-[*] Tue Feb 12 23:15:56 2013
+[*] Wed Feb 13 03:39:29 2013
 [*]
 [dumpfile] "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/Lab2/mipstest.vcd"
-[dumpfile_mtime] "Tue Feb 12 23:14:18 2013"
-[dumpfile_size] 542616
+[dumpfile_mtime] "Wed Feb 13 03:39:16 2013"
+[dumpfile_size] 641505
 [savefile] "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/Lab2/waveformat.gtkw"
-[timestart] 199
-[size] 1280 689
-[pos] 160 -1
-*-4.778754 255 22 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[timestart] 1460
+[size] 1280 688
+[pos] -324 0
+*-3.778754 1481 22 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] mips_testbench.
 [treeopen] mips_testbench.dut.
+[treeopen] mips_testbench.dut.cpu.
 [sst_width] 232
 [signals_width] 286
 [sst_expanded] 1
@@ -37,13 +38,11 @@ mips_testbench.dut.cpu.rs_data[31:0]
 mips_testbench.dut.cpu.rt_data[31:0]
 @24
 mips_testbench.dut.cpu.alu_op_x[31:0]
-@25
 mips_testbench.dut.cpu.alu_op_y[31:0]
-@24
 mips_testbench.dut.cpu.alu_opcode[3:0]
 @28
 mips_testbench.dut.cpu.alu_overflow
-@24
+@29
 mips_testbench.dut.cpu.alu_result[31:0]
 @28
 mips_testbench.dut.cpu.branch_en
@@ -72,5 +71,7 @@ mips_testbench.dut.mips_disp.color[2:0]
 @24
 mips_testbench.dut.mips_disp.block_x_write[5:0]
 mips_testbench.dut.mips_disp.block_y_write[4:0]
+@28
+mips_testbench.dut.cpu.d_stage.use_imm_operand
 [pattern_trace] 1
 [pattern_trace] 0

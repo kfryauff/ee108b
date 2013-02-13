@@ -14,8 +14,8 @@ module decode (
     input [31:0] rt_data,
 
     output wire [4:0] reg_write_addr, // destination register number
-    //**branch_en, jump_en, jump_reg_en changed from wires to registers
-    output reg branch_en,             // high when the instruction is a taken branch
+    //**jump_en, jump_reg_en changed from wires to registers
+    output wire branch_en,             // high when the instruction is a taken branch
     output reg jump_en,              // high when the instruction is j or jal
     output reg jump_reg_en,          // high when the instruction is jr or jalr
     output reg [3:0] alu_opcode,      // see mips_defines.v, chooses the function of the ALU
@@ -50,39 +50,21 @@ module decode (
     // Remember that the ALU result is an input to the decode module, so you can
     // use it to evaluate the branch condition.
 
-    always @* begin
-        casex(op)
-            `BEQ:	begin
-				if (alu_result == 32'b0)
-					branch_en = 1'b1;
-			end
-            `BNE:	begin
-				if (alu_result != 32'b0)
-					branch_en = 1'b1;
-			end
-	    `BLEZ:	begin
-				if (alu_result <= 32'b0)
-					branch_en = 1'b1;
-			end
-	    `BGTZ:	begin
-				if (alu_result > 32'b0)
-					branch_en = 1'b1;
-			end
-	    `BLTZ_GEZ:	begin		// BLTZ, BGEZ, BLTZAL, BGEZAL - these are dependent on $rt
-				if (rt_addr == `BLTZ || rt_addr == `BLTZAL) begin
-					if (alu_result < 32'b0)
-						branch_en = 1'b1;
-				end
-				if (rt_addr == `BGEZ || rt_addr == `BGEZAL) begin
-					if (alu_result >= 32'b0)
-						branch_en = 1'b1;
-				end
-			end
-            default:    branch_en = 1'b0;
-    	endcase
-    end
+	wire branch_BEQ;
+	wire branch_BNE;
+	wire branch_BLEZ;
+	wire branch_BGTZ;
+	wire branch_BLTZ;
+	wire branch_BGEZ;
 
-    //assign branch_en = 1'b0;
+	assign branch_BEQ = (op == `BEQ) & (alu_result == 32'b0);
+	assign branch_BNE = (op == `BNE) & (alu_result != 32'b0);
+	assign branch_BLEZ = (op == `BLEZ) & ((rs_data[31] == 1'b1) | (rs_data == 32'b0));
+	assign branch_BGTZ = (op == `BGTZ) & (rs_data[31] == 1'b0);
+	assign branch_BLTZ = (op == `BLTZ_GEZ) & ((rt_addr == `BLTZ | rt_addr == `BLTZAL) & (rs_data[31] == 1'b1));
+	assign branch_BGEZ = (op == `BLTZ_GEZ) & ((rt_addr == `BGEZ | rt_addr == `BGEZAL) & (rs_data[31] == 1'b0));
+
+    assign branch_en = (branch_BEQ | branch_BNE | branch_BLEZ | branch_BGTZ | branch_BLTZ | branch_BGEZ);
 
 //******************************************************************************
 // jump instructions decode
@@ -91,12 +73,25 @@ module decode (
     // TODO: check whether there is a jump or a jump to register and assert
     // jump_en or jump_reg_en high if necessary. Both j and jal should assert
     // jump_en, and both jr and jalr should assert jump_reg_en.
+
     always @* begin
         casex({op, funct})
-	    {`J, `DC6}:		jump_en = 1'b1;
-            {`J, `JR}:		jump_reg_en = 1'b1;
-            {`JAL, `DC6}:	jump_en = 1'b1;
-            {`JAL, `JALR}:	jump_reg_en = 1'b1;
+	    {`J, `DC6}:		begin
+					jump_en = 1'b1;
+					jump_reg_en = 1'b0;
+				end
+            {`SPECIAL, `JR}:	begin
+					jump_en = 1'b0;
+					jump_reg_en = 1'b1;
+				end
+            {`JAL, `DC6}:	begin
+					jump_en = 1'b1;
+					jump_reg_en = 1'b0;
+				end
+            {`SPECIAL, `JALR}:	begin
+					jump_en = 1'b0;
+					jump_reg_en = 1'b1;
+				end
             default:    	begin
 					jump_en = 1'b0;
     					jump_reg_en = 1'b0;
@@ -161,10 +156,10 @@ module decode (
 	    {`BLEZ, `DC6}:	alu_opcode = `ALU_SUB;		// BLEZ
 	    {`BGTZ, `DC6}:	alu_opcode = `ALU_SUB;		// BGTZ
 	    {`BLTZ_GEZ, `DC6}:	alu_opcode = `ALU_SUB;		// BLTZ, BGEZ - these are dependent on $rt
-            {`J, `DC6}:		alu_opcode = `ALU_PASSX;	// J
-            {`J, `JR}:		alu_opcode = `ALU_PASSX;	// JR
-            {`JAL, `DC6}:	alu_opcode = `ALU_PASSX;	// JAL
-            {`JAL, `JALR}:	alu_opcode = `ALU_PASSX;	// JALR
+            {`J, `DC6}:		alu_opcode = `ALU_PASSY;	// J
+            {`SPECIAL, `JR}:	alu_opcode = `ALU_PASSY;	// JR
+            {`JAL, `DC6}:	alu_opcode = `ALU_PASSY;	// JAL
+            {`SPECIAL, `JALR}:	alu_opcode = `ALU_PASSY;	// JALR
             default:            alu_opcode = `ALU_PASSX;
     	endcase
     end
@@ -203,10 +198,11 @@ module decode (
     assign alu_op_x = (op == `LUI) ? 32'd16 : (isShift ? shift_amount : rs_data);
     
 
-    wire use_imm_operand = &{op != `SPECIAL, op != `BNE, op != `BEQ, op != `BLEZ, op != `BGTZ, op != `BLTZ_GEZ};
+    wire use_imm_operand = &{op != `SPECIAL, op != `BNE, op != `BEQ, op != `BLEZ, op != `BGTZ, op != `BLTZ_GEZ, op != `J, op != `JAL};
 
-    assign alu_op_y = use_imm_operand ? imm_ext : rt_data;
-    assign reg_write_addr = use_imm_operand ? rt_addr : rd_addr;
+    assign alu_op_y = ((op == `JAL) | ({op, funct} == {`SPECIAL, `JALR})) ? (pc + 4) : (use_imm_operand ? imm_ext : rt_data);
+
+    assign reg_write_addr = use_imm_operand ? rt_addr : (({op} == {`JAL}) ? `RA : rd_addr);
     
     // TODO: assert this signal high when the instruction writes to a register
     // Of the three instructions the starter code supports, only sw doesn't
