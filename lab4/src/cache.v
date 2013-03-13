@@ -31,25 +31,101 @@ module cache (
     wire dram_complete;
 
     // USE THIS SYNCHRONOUS BLOCK TO ASSIGN THE INPUTS TO DRAM
-    /*
+    
     // inputs to dram should be regs when assigned in a state machine
     reg dram_we, dram_re;
-    reg [`MEM_DEPTH-3:0] dram_addr;
+    reg [`MEM_DEPTH-3:0] dram_addr = {addr[`MEM_DEPTH-1:4], 2b'0};  // *** ??? this would get to the beginning of that block (minus the block offset) + 2b'0 --> i.e. beginning of the block instead of word in the block's address?
     reg [127:0] dram_in;
     reg [31:0] cache_dout;
     reg cache_complete;
+    reg index[4:0] = addr[8:4];
+    reg block[127:0];
+
+    /* Need to account for:
+     * re 
+     *   - compulsory miss
+     *   - conflict miss
+     *      dram -> cache
+     *      cache -> dout
+     *   - hit
+     *      cache -> dout
+     * we
+     *   - miss
+     *      din -> dram
+     *   - hit
+     *      din -> cache
+     *      din -> dram
+     */
+
+    //determine whether or not input is in cache
+    // index = addr[8:4]
+    // is valid_bits[index] == 1?
+    // is tag_bits == addr[31:8]
+    wire cache_hit = (valid_bits[index] == 1) & (tag_bits[index] == addr[31:8]); 
 
     always @(posedge clk) begin
-        
+        // if (re)  //reading
+        if ( re == 1b'1 ) begin
+            //dram_we = 1b'0;
+            dram_we = 1b'0;
+            //not in cache // (miss)
+            if ( cache_hit == 1b'0 ) begin
+                dram_re = 1b'1;
+                //dram_addr = addr;             //***???
+                //set cache
+                    valid_bits[index] = 1;
+                    tag_bits[index] = addr[31:8];
+                    data_blocks[index] = dram_dout;
+                cache_dout = dram_dout;
+                cache_complete = dram_complete;
+            end
+				
+            //in cache // (hit)
+            if ( cache_hit == 1b'1 ) begin
+                dram_re = 1b'0;
+                //calc cache_dout
+                    //index = addr[8:4]
+                    block = data_blocs[index];
+                    //offset[1:0] = addr[3:2]
+                    //cache_dout = block[(offset*32) + 31: offset*32]
+                //cache_complete = ~ (re | we)  //***???
+            end
+				
+        end
+        // if (we)
+        if ( we == 1b'1 ) begin    
+            dram_re = 1b'0;
+            //not in cache  // (miss) --> 
+			if ( chache_hit == 1b'0 ) begin
+                //dram_addr = addr;             //***???
+                //dram_we = 1b'1
+                //dram_in[(offset*32) + 31: offset*32] = din;
+                //cache_complete = dram_complete
+			end
+				
+            //in cache  // (hit)
+			if ( chache_hit == 1b'1 ) begin
+                //dram_we = 1'b1
+                //dram_addr = addr;             //***???
+                //dram_in[(offset*32) + 31: offset*32] = din;
+                //set cache
+                    //index = addr[8:4]
+                    //block = data_blocks[index]
+                    //block [(offset*32) + 31: offset*32] = din;
+                //cache_complete = dram_complete
+			end
+                
+        end
+
     end
     
-    */
+    
 
     // COMMENT OUT THIS CONTINUOUS CODE WHEN IMPLEMENTING YOUR CACHE
     // The code below implements the cache module in the trivial case when
     // we don't use a cache and we use only the first word in each memory
     // block, (which are four words each).
-    ///*
+    /*
 
     // just pass we and re straignt to the DRAM
     wire dram_we = we;
@@ -67,7 +143,7 @@ module cache (
     // the cache is done when DRAM is done
     wire cache_complete = dram_complete;
 
-    //*/
+    */
 
     dataram dram (.clk(clk),
                   .memclk(memclk),
