@@ -34,12 +34,14 @@ module cache (
     
     // inputs to dram should be regs when assigned in a state machine
     reg dram_we, dram_re;
-    reg [`MEM_DEPTH-3:0] dram_addr = {addr[`MEM_DEPTH-1:4], 2b'0};  // *** ??? this would get to the beginning of that block (minus the block offset) + 2b'0 --> i.e. beginning of the block instead of word in the block's address?
+    wire [`MEM_DEPTH-3:0] dram_addr = {addr[`MEM_DEPTH-1:4], 2'b0};  
+		// *** ??? this would get to the beginning of that block (minus the block offset) + 2b'0 --> i.e. beginning of the block instead of word in the block's address?
     reg [127:0] dram_in;
     reg [31:0] cache_dout;
     reg cache_complete;
-    reg index[4:0] = addr[8:4];
-    reg block[127:0];
+	reg [4:0] index;
+    reg [127:0] block;
+	reg [4:0] block_start = addr[3:2] << 3'd5;
 
     /* Need to account for:
      * re 
@@ -61,58 +63,54 @@ module cache (
     // index = addr[8:4]
     // is valid_bits[index] == 1?
     // is tag_bits == addr[31:8]
-    wire cache_hit = (valid_bits[index] == 1) & (tag_bits[index] == addr[31:8]); 
+    wire cache_hit = (valid_bits[index] == 1'b1) && (tag_bits[index] == addr[31:9]); 
 
     always @(posedge clk) begin
+					  index = addr[8:4];
         // if (re)  //reading
-        if ( re == 1b'1 ) begin
+        if ( re == 1'b1 ) begin
             //dram_we = 1b'0;
-            dram_we = 1b'0;
+            dram_we = 1'b0;
             //not in cache // (miss)
-            if ( cache_hit == 1b'0 ) begin
-                dram_re = 1b'1;
-                //dram_addr = addr;             //***???
+            if ( cache_hit == 1'b0 ) begin
+                dram_re = 1'b1;
                 //set cache
                     valid_bits[index] = 1;
-                    tag_bits[index] = addr[31:8];
-                    data_blocks[index] = dram_dout;
-                cache_dout = dram_dout;
+                    tag_bits[index] = addr[31:9];
+                    data_blocks[index] = dram_out;
+                cache_dout = dram_out;
                 cache_complete = dram_complete;
             end
 				
             //in cache // (hit)
-            if ( cache_hit == 1b'1 ) begin
-                dram_re = 1b'0;
+            if ( cache_hit == 1'b1 ) begin
+                dram_re = 1'b0;
                 //calc cache_dout
-                    //index = addr[8:4]
-                    block = data_blocs[index];
-                    //offset[1:0] = addr[3:2]
-                    //cache_dout = block[(offset*32) + 31: offset*32]
-                //cache_complete = ~ (re | we)  //***???
+                    block = data_blocks[index];
+                    //offset[1:0] = addr[3:2];
+                    cache_dout = block[(block_start + 31): block_start];
+                cache_complete = ~ (re | we);  //***???
             end
 				
         end
         // if (we)
-        if ( we == 1b'1 ) begin    
-            dram_re = 1b'0;
+        if ( we == 1'b1 ) begin    
+            dram_re = 1'b0;
+			dram_we = 1'b1;
             //not in cache  // (miss) --> 
-			if ( chache_hit == 1b'0 ) begin
-                //dram_addr = addr;             //***???
-                //dram_we = 1b'1
-                //dram_in[(offset*32) + 31: offset*32] = din;
-                //cache_complete = dram_complete
+			if ( cache_hit == 1'b0 ) begin
+                dram_in[block_start + 31: block_start] = din;
+                cache_complete = dram_complete;
 			end
 				
             //in cache  // (hit)
-			if ( chache_hit == 1b'1 ) begin
-                //dram_we = 1'b1
-                //dram_addr = addr;             //***???
-                //dram_in[(offset*32) + 31: offset*32] = din;
+			if ( cache_hit == 1'b1 ) begin
+                dram_in[block_start + 31: block_start] = din;
                 //set cache
                     //index = addr[8:4]
-                    //block = data_blocks[index]
-                    //block [(offset*32) + 31: offset*32] = din;
-                //cache_complete = dram_complete
+					block = data_blocks[index];
+                    block [block_start + 31: block_start] = din;
+                cache_complete = dram_complete;
 			end
                 
         end
