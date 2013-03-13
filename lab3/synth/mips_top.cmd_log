@@ -1,0 +1,25 @@
+xst -intstyle ise -ifn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.xst" -ofn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc mips_top.ucf -p xc5vlx110t-ff1136-1 mips_top.ngc mips_top.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o mips_top_map.ncd mips_top.ngd mips_top.pcf 
+par -w -intstyle ise -ol high -mt off mips_top_map.ncd mips_top.ncd mips_top.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml mips_top.twx mips_top.ncd -o mips_top.twr mips_top.pcf -ucf mips_top.ucf 
+bitgen -intstyle ise -f mips_top.ut mips_top.ncd 
+xst -intstyle ise -ifn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.xst" -ofn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc mips_top.ucf -p xc5vlx110t-ff1136-1 mips_top.ngc mips_top.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o mips_top_map.ncd mips_top.ngd mips_top.pcf 
+par -w -intstyle ise -ol high -mt off mips_top_map.ncd mips_top.ncd mips_top.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml mips_top.twx mips_top.ncd -o mips_top.twr mips_top.pcf -ucf mips_top.ucf 
+bitgen -intstyle ise -f mips_top.ut mips_top.ncd 
+xst -intstyle ise -ifn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.xst" -ofn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.syr" 
+xst -intstyle ise -ifn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.xst" -ofn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.syr" 
+xst -intstyle ise -ifn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.xst" -ofn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.syr" 
+xst -intstyle ise -ifn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.xst" -ofn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.syr" 
+xst -intstyle ise -ifn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.xst" -ofn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.syr" 
+xst -intstyle ise -ifn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.xst" -ofn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.syr" 
+xst -intstyle ise -ifn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.xst" -ofn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.syr" 
+xst -intstyle ise -ifn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.xst" -ofn "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc mips_top.ucf -p xc5vlx110t-ff1136-1 mips_top.ngc mips_top.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o mips_top_map.ncd mips_top.ngd mips_top.pcf 
+par -w -intstyle ise -ol high -mt off mips_top_map.ncd mips_top.ncd mips_top.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml mips_top.twx mips_top.ncd -o mips_top.twr mips_top.pcf -ucf mips_top.ucf 
+bitgen -intstyle ise -f mips_top.ut mips_top.ncd 

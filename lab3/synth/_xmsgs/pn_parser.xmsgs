@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated   -->
+<!--     by the Xilinx ISE software.  Any direct editing or        -->
+<!--     changes made to this file may result in unpredictable     -->
+<!--     behavior or data corruption.  It is strongly advised that -->
+<!--     users do not edit the contents of this file.              -->
+<!--                                                               -->
+<!-- Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.    -->
+
+<messages>
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/lib/dff.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/lib/dffar.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/lib/dffare.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/lib/dffr.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/lib/dffre.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/alu.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/alu.v</arg>&quot; Line <arg fmt="%d" index="2">7</arg>. <arg fmt="%s" index="3">Include file found: &apos;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/mips_defines.v&apos; in file &quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/alu.v&quot; line 7
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/brute_force_synchronizer.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/button_press_unit.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/chip_data_parser.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/color_bars.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/color_bars.v</arg>&quot; Line <arg fmt="%d" index="2">11</arg>. <arg fmt="%s" index="3">Include file found: &apos;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/dvi_defines.v&apos; in file &quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/color_bars.v&quot; line 11
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/dataram.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/dataram.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Include file found: &apos;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/mips_defines.v&apos; in file &quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/dataram.v&quot; line 1
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/debouncer.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/decode.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/decode.v</arg>&quot; Line <arg fmt="%d" index="2">7</arg>. <arg fmt="%s" index="3">Include file found: &apos;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/mips_defines.v&apos; in file &quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/decode.v&quot; line 7
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/dvi_controller_top.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/dvi_controller_top.v</arg>&quot; Line <arg fmt="%d" index="2">11</arg>. <arg fmt="%s" index="3">Include file found: &apos;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/dvi_defines.v&apos; in file &quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/dvi_controller_top.v&quot; line 11
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/i2c_emulator.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/instruction_fetch.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/irom.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/irom.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Include file found: &apos;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/mips_defines.v&apos; in file &quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/irom.v&quot; line 1
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/memory_top.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/memory_top.v</arg>&quot; Line <arg fmt="%d" index="2">7</arg>. <arg fmt="%s" index="3">Include file found: &apos;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/mips_defines.v&apos; in file &quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/memory_top.v&quot; line 7
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/mips_cpu.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/mips_display.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/mips_display.v</arg>&quot; Line <arg fmt="%d" index="2">9</arg>. <arg fmt="%s" index="3">Include file found: &apos;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/dvi_defines.v&apos; in file &quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/mips_display.v&quot; line 9
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/mips_top.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/one_pulse.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/regfile.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/sync_generators.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/sync_generators.v</arg>&quot; Line <arg fmt="%d" index="2">11</arg>. <arg fmt="%s" index="3">Include file found: &apos;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/dvi_defines.v&apos; in file &quot;/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/src/sync_generators.v&quot; line 11
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1574" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;/usr/class/ee108b/labs/lab3/lib/dffarre.v\&quot; into library work</arg>
+</msg>
+
+</messages>
+

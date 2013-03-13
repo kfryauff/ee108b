@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.ncd
+OUTFILE=/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.bit
+FAMILY=Virtex5
+PART=xc5vlx110t-1ff1136
+WORKINGDIR=/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth
+LICENSE=ISE
+USER_INFO=174110924_174416168_761

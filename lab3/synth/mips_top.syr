@@ -1,0 +1,1302 @@
+Release 12.2 - xst M.63c (lin)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.06 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.06 secs
+ 
+--> 
+Reading design: mips_top.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "mips_top.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+Verilog Include Directory          : { "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include" }
+
+---- Target Parameters
+Output File Name                   : "mips_top"
+Output Format                      : NGC
+Target Device                      : xc5vlx110t-1-ff1136
+
+---- Source Options
+Top Module Name                    : mips_top
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Off
+Reduce Control Sets                : Off
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 2
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "../src/irom.v" in library work
+Compiling verilog include file "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/mips_defines.v"
+Compiling verilog file "../src/dataram.v" in library work
+Compiling verilog include file "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/mips_defines.v"
+Module <irom> compiled
+Compiling verilog file "../lib/dffre.v" in library work
+Module <dataram> compiled
+Compiling verilog file "../lib/dffr.v" in library work
+Module <dffre> compiled
+Compiling verilog file "../lib/dffare.v" in library work
+Module <dffr> compiled
+Compiling verilog file "../lib/dff.v" in library work
+Module <dffare> compiled
+Compiling verilog file "../../../../../../../../../../usr/class/ee108b/labs/lab3/lib/dffarre.v" in library work
+Module <dff> compiled
+Compiling verilog file "../src/sync_generators.v" in library work
+Compiling verilog include file "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/dvi_defines.v"
+Module <dffarre> compiled
+Compiling verilog file "../src/regfile.v" in library work
+Module <sync_generators> compiled
+Compiling verilog file "../src/one_pulse.v" in library work
+Module <regfile> compiled
+Compiling verilog file "../src/memory_top.v" in library work
+Compiling verilog include file "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/mips_defines.v"
+Module <one_pulse> compiled
+Compiling verilog file "../src/instruction_fetch.v" in library work
+Module <memory_top> compiled
+Compiling verilog file "../src/decode.v" in library work
+Compiling verilog include file "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/mips_defines.v"
+Module <instruction_fetch> compiled
+Compiling verilog file "../src/debouncer.v" in library work
+Module <decode> compiled
+Compiling verilog file "../src/chip_data_parser.v" in library work
+Module <debouncer> compiled
+Compiling verilog file "../src/brute_force_synchronizer.v" in library work
+Module <chip_data_parser> compiled
+Compiling verilog file "../src/alu.v" in library work
+Compiling verilog include file "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/mips_defines.v"
+Module <brute_force_synchronizer> compiled
+Compiling verilog file "../src/mips_display.v" in library work
+Compiling verilog include file "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/dvi_defines.v"
+Module <alu> compiled
+Compiling verilog file "../src/mips_cpu.v" in library work
+Module <mips_display> compiled
+Compiling verilog file "../src/i2c_emulator.v" in library work
+Module <mips_cpu> compiled
+Compiling verilog file "../src/dvi_controller_top.v" in library work
+Compiling verilog include file "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/dvi_defines.v"
+Module <i2c_emulator> compiled
+Compiling verilog file "../src/color_bars.v" in library work
+Compiling verilog include file "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/include/dvi_defines.v"
+Module <dvi_controller_top> compiled
+Compiling verilog file "../src/button_press_unit.v" in library work
+Module <color_bars> compiled
+Compiling verilog file "../lib/dffar.v" in library work
+Module <button_press_unit> compiled
+Compiling verilog file "../src/mips_top.v" in library work
+Module <dffar> compiled
+Module <mips_top> compiled
+No errors in compilation
+Analysis of file <"mips_top.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <mips_top> in library <work>.
+
+Analyzing hierarchy for module <button_press_unit> in library <work> with parameters.
+	WIDTH = "00000000000000000000000000010100"
+
+Analyzing hierarchy for module <dffr> in library <work> with parameters.
+	WIDTH = "00000000000000000000000000000001"
+
+Analyzing hierarchy for module <dffar> in library <work> with parameters.
+	WIDTH = "00000000000000000000000000000001"
+
+Analyzing hierarchy for module <mips_cpu> in library <work>.
+
+Analyzing hierarchy for module <dff> in library <work> with parameters.
+	WIDTH = "00000000000000000000000000011011"
+
+Analyzing hierarchy for module <dvi_controller_top> in library <work>.
+
+Analyzing hierarchy for module <mips_display> in library <work>.
+
+Analyzing hierarchy for module <i2c_emulator> in library <work> with parameters.
+	CLKS_PER_SCL = "00000000000000000010011100010000"
+
+Analyzing hierarchy for module <color_bars> in library <work>.
+
+Analyzing hierarchy for module <brute_force_synchronizer> in library <work>.
+
+Analyzing hierarchy for module <debouncer> in library <work> with parameters.
+	WIDTH = "00000000000000000000000000010100"
+
+Analyzing hierarchy for module <one_pulse> in library <work>.
+
+Analyzing hierarchy for module <instruction_fetch> in library <work>.
+
+Analyzing hierarchy for module <dffare> in library <work> with parameters.
+	WIDTH = "00000000000000000000000000100000"
+
+Analyzing hierarchy for module <decode> in library <work>.
+
+Analyzing hierarchy for module <dffarre> in library <work> with parameters.
+	WIDTH = "00000000000000000000000000100000"
+
+Analyzing hierarchy for module <dffarre> in library <work> with parameters.
+	WIDTH = "00000000000000000000000000000100"
+
+Analyzing hierarchy for module <dffarre> in library <work> with parameters.
+	WIDTH = "00000000000000000000000000000001"
+
+Analyzing hierarchy for module <dffarre> in library <work> with parameters.
+	WIDTH = "00000000000000000000000000000101"
+
+Analyzing hierarchy for module <alu> in library <work>.
+
+Analyzing hierarchy for module <dffare> in library <work> with parameters.
+	WIDTH = "00000000000000000000000000000001"
+
+Analyzing hierarchy for module <dffare> in library <work> with parameters.
+	WIDTH = "00000000000000000000000000000101"
+
+Analyzing hierarchy for module <memory_top> in library <work>.
+
+Analyzing hierarchy for module <regfile> in library <work>.
+
+Analyzing hierarchy for module <sync_generators> in library <work>.
+
+Analyzing hierarchy for module <chip_data_parser> in library <work>.
+
+Analyzing hierarchy for module <dff> in library <work> with parameters.
+	WIDTH = "00000000000000000000000000000001"
+
+Analyzing hierarchy for module <dffre> in library <work> with parameters.
+	WIDTH = "00000000000000000000000000010100"
+
+Analyzing hierarchy for module <dffre> in library <work> with parameters.
+	WIDTH = "00000000000000000000000000000010"
+
+Analyzing hierarchy for module <dffr> in library <work> with parameters.
+	WIDTH = "00000000000000000000000000000001"
+
+Analyzing hierarchy for module <irom> in library <work>.
+
+Analyzing hierarchy for module <dataram> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <mips_top>.
+Module <mips_top> is correct for synthesis.
+ 
+Analyzing module <button_press_unit> in library <work>.
+	WIDTH = 32'sb00000000000000000000000000010100
+Module <button_press_unit> is correct for synthesis.
+ 
+Analyzing module <brute_force_synchronizer> in library <work>.
+Module <brute_force_synchronizer> is correct for synthesis.
+ 
+Analyzing module <dff.2> in library <work>.
+	WIDTH = 32'sb00000000000000000000000000000001
+Module <dff.2> is correct for synthesis.
+ 
+Analyzing module <debouncer> in library <work>.
+	WIDTH = 32'sb00000000000000000000000000010100
+Module <debouncer> is correct for synthesis.
+ 
+Analyzing module <dffre.1> in library <work>.
+	WIDTH = 32'sb00000000000000000000000000010100
+Module <dffre.1> is correct for synthesis.
+ 
+Analyzing module <dffre.2> in library <work>.
+	WIDTH = 32'sb00000000000000000000000000000010
+Module <dffre.2> is correct for synthesis.
+ 
+Analyzing module <one_pulse> in library <work>.
+Module <one_pulse> is correct for synthesis.
+ 
+Analyzing module <dffr> in library <work>.
+	WIDTH = 32'sb00000000000000000000000000000001
+Module <dffr> is correct for synthesis.
+ 
+Analyzing module <dffar> in library <work>.
+	WIDTH = 32'sb00000000000000000000000000000001
+Module <dffar> is correct for synthesis.
+ 
+Analyzing module <mips_cpu> in library <work>.
+Module <mips_cpu> is correct for synthesis.
+ 
+Analyzing module <instruction_fetch> in library <work>.
+Module <instruction_fetch> is correct for synthesis.
+ 
+Analyzing module <irom> in library <work>.
+Module <irom> is correct for synthesis.
+ 
+Analyzing module <dffare.1> in library <work>.
+	WIDTH = 32'sb00000000000000000000000000100000
+Module <dffare.1> is correct for synthesis.
+ 
+Analyzing module <decode> in library <work>.
+Module <decode> is correct for synthesis.
+ 
+Analyzing module <dffarre.1> in library <work>.
+	WIDTH = 32'sb00000000000000000000000000100000
+Module <dffarre.1> is correct for synthesis.
+ 
+Analyzing module <dffarre.2> in library <work>.
+	WIDTH = 32'sb00000000000000000000000000000100
+Module <dffarre.2> is correct for synthesis.
+ 
+Analyzing module <dffarre.3> in library <work>.
+	WIDTH = 32'sb00000000000000000000000000000001
+Module <dffarre.3> is correct for synthesis.
+ 
+Analyzing module <dffarre.4> in library <work>.
+	WIDTH = 32'sb00000000000000000000000000000101
+Module <dffarre.4> is correct for synthesis.
+ 
+Analyzing module <alu> in library <work>.
+Module <alu> is correct for synthesis.
+ 
+Analyzing module <dffare.2> in library <work>.
+	WIDTH = 32'sb00000000000000000000000000000001
+Module <dffare.2> is correct for synthesis.
+ 
+Analyzing module <dffare.3> in library <work>.
+	WIDTH = 32'sb00000000000000000000000000000101
+Module <dffare.3> is correct for synthesis.
+ 
+Analyzing module <memory_top> in library <work>.
+Module <memory_top> is correct for synthesis.
+ 
+Analyzing module <dataram> in library <work>.
+Module <dataram> is correct for synthesis.
+ 
+Analyzing module <regfile> in library <work>.
+Module <regfile> is correct for synthesis.
+ 
+Analyzing module <dff.1> in library <work>.
+	WIDTH = 32'sb00000000000000000000000000011011
+Module <dff.1> is correct for synthesis.
+ 
+Analyzing module <dvi_controller_top> in library <work>.
+Module <dvi_controller_top> is correct for synthesis.
+ 
+Analyzing module <sync_generators> in library <work>.
+Module <sync_generators> is correct for synthesis.
+ 
+Analyzing module <chip_data_parser> in library <work>.
+Module <chip_data_parser> is correct for synthesis.
+ 
+Analyzing module <mips_display> in library <work>.
+Module <mips_display> is correct for synthesis.
+ 
+Analyzing module <i2c_emulator> in library <work>.
+	CLKS_PER_SCL = 32'sb00000000000000000010011100010000
+Module <i2c_emulator> is correct for synthesis.
+ 
+Analyzing module <color_bars> in library <work>.
+Module <color_bars> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <dffr>.
+    Related source file is "../lib/dffr.v".
+    Found 1-bit register for signal <q<0>>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <dffr> synthesized.
+
+
+Synthesizing Unit <dffar>.
+    Related source file is "../lib/dffar.v".
+    Found 1-bit register for signal <q<0>>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <dffar> synthesized.
+
+
+Synthesizing Unit <dff_1>.
+    Related source file is "../lib/dff.v".
+    Found 27-bit register for signal <q>.
+    Summary:
+	inferred  27 D-type flip-flop(s).
+Unit <dff_1> synthesized.
+
+
+Synthesizing Unit <mips_display>.
+    Related source file is "../src/mips_display.v".
+    Found 2048x3-bit dual-port RAM <Mram_block_colors> for signal <block_colors>.
+    Found 11-bit adder for signal <read_addr>.
+    Found 10-bit adder carry out for signal <read_addr$addsub0001> created at line 31.
+    Found 11-bit adder for signal <write_addr>.
+    Found 10-bit adder carry out for signal <write_addr$addsub0001> created at line 33.
+    Summary:
+	inferred   1 RAM(s).
+	inferred   4 Adder/Subtractor(s).
+Unit <mips_display> synthesized.
+
+
+Synthesizing Unit <i2c_emulator>.
+    Related source file is "../src/i2c_emulator.v".
+    Found 1-bit tristate buffer for signal <sda>.
+    Found 1-bit tristate buffer for signal <scl>.
+    Found 3-bit up counter for signal <packet_index>.
+    Found 14-bit up counter for signal <scl_counter>.
+    Found 5-bit comparator greater for signal <scl_logic$cmp_gt0000> created at line 41.
+    Found 14-bit comparator lessequal for signal <scl_logic$cmp_le0000> created at line 41.
+    Found 5-bit comparator less for signal <scl_logic$cmp_lt0000> created at line 41.
+    Found 1-bit register for signal <sda_logic>.
+    Found 5-bit comparator greatequal for signal <sda_logic$cmp_ge0000> created at line 99.
+    Found 14-bit comparator greatequal for signal <sda_logic$cmp_ge0001> created at line 112.
+    Found 5-bit comparator lessequal for signal <sda_logic$cmp_le0000> created at line 99.
+    Found 28-bit register for signal <sda_shift>.
+    Found 5-bit up counter for signal <state>.
+    Found 5-bit comparator greatequal for signal <state$cmp_ge0000> created at line 72.
+    Summary:
+	inferred   3 Counter(s).
+	inferred  29 D-type flip-flop(s).
+	inferred   7 Comparator(s).
+	inferred   2 Tristate(s).
+Unit <i2c_emulator> synthesized.
+
+
+Synthesizing Unit <color_bars>.
+    Related source file is "../src/color_bars.v".
+    Found 10-bit comparator greatequal for signal <r$cmp_ge0000> created at line 72.
+    Found 10-bit comparator greatequal for signal <r$cmp_ge0001> created at line 49.
+    Found 11-bit comparator greatequal for signal <r$cmp_ge0002> created at line 65.
+    Found 11-bit comparator greatequal for signal <r$cmp_ge0003> created at line 60.
+    Found 11-bit comparator greatequal for signal <r$cmp_ge0004> created at line 55.
+    Found 10-bit comparator greater for signal <r$cmp_gt0000> created at line 78.
+    Found 10-bit comparator less for signal <r$cmp_lt0000> created at line 72.
+    Found 10-bit comparator less for signal <r$cmp_lt0001> created at line 49.
+    Found 11-bit comparator less for signal <r$cmp_lt0002> created at line 65.
+    Found 11-bit comparator less for signal <r$cmp_lt0003> created at line 60.
+    Found 11-bit comparator less for signal <r$cmp_lt0004> created at line 55.
+    Found 11-bit comparator less for signal <r$cmp_lt0005> created at line 50.
+    Found 10-bit comparator less for signal <r$cmp_lt0006> created at line 26.
+    Summary:
+	inferred  13 Comparator(s).
+Unit <color_bars> synthesized.
+
+
+Synthesizing Unit <dff_2>.
+    Related source file is "../lib/dff.v".
+    Found 1-bit register for signal <q<0>>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <dff_2> synthesized.
+
+
+Synthesizing Unit <dffre_1>.
+    Related source file is "../lib/dffre.v".
+    Found 20-bit register for signal <q>.
+    Summary:
+	inferred  20 D-type flip-flop(s).
+Unit <dffre_1> synthesized.
+
+
+Synthesizing Unit <dffre_2>.
+    Related source file is "../lib/dffre.v".
+    Found 2-bit register for signal <q>.
+    Summary:
+	inferred   2 D-type flip-flop(s).
+Unit <dffre_2> synthesized.
+
+
+Synthesizing Unit <dffare_1>.
+    Related source file is "../lib/dffare.v".
+    Found 32-bit register for signal <q>.
+    Summary:
+	inferred  32 D-type flip-flop(s).
+Unit <dffare_1> synthesized.
+
+
+Synthesizing Unit <decode>.
+    Related source file is "../src/decode.v".
+    Found 32-bit adder for signal <alu_op_y$addsub0000> created at line 225.
+    Found 5-bit comparator equal for signal <forwardA_ex$cmp_eq0000> created at line 179.
+    Found 5-bit comparator equal for signal <forwardA_mem$cmp_eq0000> created at line 183.
+    Found 5-bit comparator equal for signal <forwardB_ex$cmp_eq0000> created at line 180.
+    Found 5-bit comparator equal for signal <forwardB_mem$cmp_eq0000> created at line 184.
+    Found 32-bit comparator equal for signal <isEqual>.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred   5 Comparator(s).
+Unit <decode> synthesized.
+
+
+Synthesizing Unit <dffarre_1>.
+    Related source file is "../../../../../../../../../../usr/class/ee108b/labs/lab3/lib/dffarre.v".
+    Found 32-bit register for signal <q>.
+    Summary:
+	inferred  32 D-type flip-flop(s).
+Unit <dffarre_1> synthesized.
+
+
+Synthesizing Unit <dffarre_2>.
+    Related source file is "../../../../../../../../../../usr/class/ee108b/labs/lab3/lib/dffarre.v".
+    Found 4-bit register for signal <q>.
+    Summary:
+	inferred   4 D-type flip-flop(s).
+Unit <dffarre_2> synthesized.
+
+
+Synthesizing Unit <dffarre_3>.
+    Related source file is "../../../../../../../../../../usr/class/ee108b/labs/lab3/lib/dffarre.v".
+    Found 1-bit register for signal <q<0>>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <dffarre_3> synthesized.
+
+
+Synthesizing Unit <dffarre_4>.
+    Related source file is "../../../../../../../../../../usr/class/ee108b/labs/lab3/lib/dffarre.v".
+    Found 5-bit register for signal <q>.
+    Summary:
+	inferred   5 D-type flip-flop(s).
+Unit <dffarre_4> synthesized.
+
+
+Synthesizing Unit <alu>.
+    Related source file is "../src/alu.v".
+    Found 32-bit 15-to-1 multiplexer for signal <alu_result>.
+    Found 32-bit addsub for signal <alu_result$addsub0000>.
+    Found 32-bit comparator less for signal <alu_result$cmp_lt0000> created at line 38.
+    Found 32-bit comparator less for signal <alu_result$cmp_lt0001> created at line 39.
+    Found 32-bit shifter logical right for signal <alu_result$shift0000> created at line 40.
+    Found 32-bit shifter arithmetic right for signal <alu_result$shift0001> created at line 41.
+    Found 32-bit shifter logical left for signal <alu_result$shift0002> created at line 42.
+    Found 32-bit xor2 for signal <alu_result$xor0000> created at line 33.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred   2 Comparator(s).
+	inferred  32 Multiplexer(s).
+	inferred   3 Combinational logic shifter(s).
+Unit <alu> synthesized.
+
+
+Synthesizing Unit <dffare_2>.
+    Related source file is "../lib/dffare.v".
+    Found 1-bit register for signal <q<0>>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <dffare_2> synthesized.
+
+
+Synthesizing Unit <dffare_3>.
+    Related source file is "../lib/dffare.v".
+    Found 5-bit register for signal <q>.
+    Summary:
+	inferred   5 D-type flip-flop(s).
+Unit <dffare_3> synthesized.
+
+
+Synthesizing Unit <regfile>.
+    Related source file is "../src/regfile.v".
+    Found 32x32-bit dual-port RAM <Mram_regs> for signal <regs>.
+    Found 32x32-bit dual-port RAM <Mram_regs_ren> for signal <regs>.
+    Found 32-bit register for signal <rs_data>.
+    Found 32-bit register for signal <rt_data>.
+    Found 5-bit comparator equal for signal <rs_data$cmp_eq0001> created at line 34.
+    Found 5-bit comparator equal for signal <rt_data$cmp_eq0001> created at line 41.
+    Summary:
+	inferred   2 RAM(s).
+	inferred  64 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+Unit <regfile> synthesized.
+
+
+Synthesizing Unit <irom>.
+    Related source file is "../src/irom.v".
+    Found 512x32-bit ROM for signal <$varindex0000> created at line 15.
+    Found 32-bit register for signal <dout>.
+    Summary:
+	inferred   1 ROM(s).
+	inferred  32 D-type flip-flop(s).
+Unit <irom> synthesized.
+
+
+Synthesizing Unit <dataram>.
+    Related source file is "../src/dataram.v".
+    Found 16384x32-bit single-port RAM <Mram_mem> for signal <mem>.
+    Found 32-bit register for signal <dout>.
+    Summary:
+	inferred   1 RAM(s).
+	inferred  32 D-type flip-flop(s).
+Unit <dataram> synthesized.
+
+
+Synthesizing Unit <sync_generators>.
+    Related source file is "../src/sync_generators.v".
+    Found 11-bit up counter for signal <x>.
+    Found 10-bit up counter for signal <y>.
+    Found 11-bit comparator greatequal for signal <hsync>.
+    Found 11-bit up counter for signal <hsync_counter>.
+    Found 11-bit up counter for signal <pixel_counter>.
+    Found 11-bit comparator greatequal for signal <valid_h$cmp_ge0000> created at line 58.
+    Found 11-bit comparator lessequal for signal <valid_h$cmp_le0000> created at line 58.
+    Found 11-bit comparator greatequal for signal <valid_v$cmp_ge0000> created at line 60.
+    Found 11-bit comparator lessequal for signal <valid_v$cmp_le0000> created at line 60.
+    Found 11-bit comparator greatequal for signal <vsync$cmp_ge0000> created at line 55.
+    Summary:
+	inferred   4 Counter(s).
+	inferred   6 Comparator(s).
+Unit <sync_generators> synthesized.
+
+
+Synthesizing Unit <chip_data_parser>.
+    Related source file is "../src/chip_data_parser.v".
+    Found 1-bit register for signal <chip_data_enable>.
+    Found 24-bit register for signal <pixel>.
+    Summary:
+	inferred  25 D-type flip-flop(s).
+Unit <chip_data_parser> synthesized.
+
+
+Synthesizing Unit <dvi_controller_top>.
+    Related source file is "../src/dvi_controller_top.v".
+Unit <dvi_controller_top> synthesized.
+
+
+Synthesizing Unit <brute_force_synchronizer>.
+    Related source file is "../src/brute_force_synchronizer.v".
+Unit <brute_force_synchronizer> synthesized.
+
+
+Synthesizing Unit <debouncer>.
+    Related source file is "../src/debouncer.v".
+    Found 4x3-bit ROM for signal <current_state_q$rom0000>.
+    Found 20-bit adder for signal <$add0000> created at line 26.
+    Summary:
+	inferred   1 ROM(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <debouncer> synthesized.
+
+
+Synthesizing Unit <one_pulse>.
+    Related source file is "../src/one_pulse.v".
+Unit <one_pulse> synthesized.
+
+
+Synthesizing Unit <instruction_fetch>.
+    Related source file is "../src/instruction_fetch.v".
+    Found 32-bit adder for signal <b_addr>.
+    Found 32-bit adder for signal <pc_id_p4>.
+    Found 32-bit adder for signal <pc_next$addsub0000> created at line 43.
+    Summary:
+	inferred   3 Adder/Subtractor(s).
+Unit <instruction_fetch> synthesized.
+
+
+Synthesizing Unit <memory_top>.
+    Related source file is "../src/memory_top.v".
+Unit <memory_top> synthesized.
+
+
+Synthesizing Unit <button_press_unit>.
+    Related source file is "../src/button_press_unit.v".
+Unit <button_press_unit> synthesized.
+
+
+Synthesizing Unit <mips_cpu>.
+    Related source file is "../src/mips_cpu.v".
+Unit <mips_cpu> synthesized.
+
+
+Synthesizing Unit <mips_top>.
+    Related source file is "../src/mips_top.v".
+    Found 27-bit adder for signal <$add0000> created at line 76.
+    Found 1-bit xor2 for signal <$xor0000> created at line 50.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+Unit <mips_top> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 4
+ 16384x32-bit single-port RAM                          : 1
+ 2048x3-bit dual-port RAM                              : 1
+ 32x32-bit dual-port RAM                               : 2
+# ROMs                                                 : 4
+ 4x3-bit ROM                                           : 3
+ 512x32-bit ROM                                        : 1
+# Adders/Subtractors                                   : 13
+ 10-bit adder carry out                                : 2
+ 11-bit adder                                          : 2
+ 20-bit adder                                          : 3
+ 27-bit adder                                          : 1
+ 32-bit adder                                          : 4
+ 32-bit addsub                                         : 1
+# Counters                                             : 7
+ 10-bit up counter                                     : 1
+ 11-bit up counter                                     : 3
+ 14-bit up counter                                     : 1
+ 3-bit up counter                                      : 1
+ 5-bit up counter                                      : 1
+# Registers                                            : 49
+ 1-bit register                                        : 23
+ 2-bit register                                        : 3
+ 20-bit register                                       : 3
+ 24-bit register                                       : 1
+ 27-bit register                                       : 1
+ 28-bit register                                       : 1
+ 32-bit register                                       : 13
+ 4-bit register                                        : 1
+ 5-bit register                                        : 3
+# Comparators                                          : 35
+ 10-bit comparator greatequal                          : 2
+ 10-bit comparator greater                             : 1
+ 10-bit comparator less                                : 3
+ 11-bit comparator greatequal                          : 7
+ 11-bit comparator less                                : 4
+ 11-bit comparator lessequal                           : 2
+ 14-bit comparator greatequal                          : 1
+ 14-bit comparator lessequal                           : 1
+ 32-bit comparator equal                               : 1
+ 32-bit comparator less                                : 2
+ 5-bit comparator equal                                : 6
+ 5-bit comparator greatequal                           : 2
+ 5-bit comparator greater                              : 1
+ 5-bit comparator less                                 : 1
+ 5-bit comparator lessequal                            : 1
+# Multiplexers                                         : 1
+ 32-bit 15-to-1 multiplexer                            : 1
+# Logic shifters                                       : 3
+ 32-bit shifter arithmetic right                       : 1
+ 32-bit shifter logical left                           : 1
+ 32-bit shifter logical right                          : 1
+# Tristates                                            : 2
+ 1-bit tristate buffer                                 : 2
+# Xors                                                 : 2
+ 1-bit xor2                                            : 1
+ 32-bit xor2                                           : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <dataram>.
+INFO:Xst:3040 - The RAM <Mram_mem> will be implemented as a BLOCK RAM, absorbing the following register(s): <dout>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16384-word x 32-bit                 |          |
+    |     mode           | read-first                          |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     weA            | connected to signal <we>            | high     |
+    |     addrA          | connected to signal <addr>          |          |
+    |     diA            | connected to signal <din>           |          |
+    |     doA            | connected to signal <dout>          |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+Unit <dataram> synthesized (advanced).
+
+Synthesizing (advanced) Unit <irom>.
+INFO:Xst:3044 - The ROM <Mrom__varindex0000> will be implemented as a read-only BLOCK RAM, absorbing the register: <dout>.
+INFO:Xst:3030 - HDL ADVISOR - Register <q> currently described with an asynchronous reset, could be combined with distributed RAM <Mrom__varindex0000> for implementation on block RAM resources if you made this reset synchronous instead.
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 512-word x 32-bit                   |          |
+    |     mode           | write-first                         |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     weA            | connected to internal node          | high     |
+    |     addrA          | connected to signal <addr>          |          |
+    |     diA            | connected to internal node          |          |
+    |     doA            | connected to signal <dout>          |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+Unit <irom> synthesized (advanced).
+
+Synthesizing (advanced) Unit <mips_display>.
+INFO:Xst:3031 - HDL ADVISOR - The RAM <Mram_block_colors> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 2048-word x 3-bit                   |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     weA            | connected to signal <we>            | high     |
+    |     addrA          | connected to signal <write_addr>    |          |
+    |     diA            | connected to signal <display_data>  |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 2048-word x 3-bit                   |          |
+    |     addrB          | connected to signal <read_addr>     |          |
+    |     doB            | connected to signal <out_color>     |          |
+    -----------------------------------------------------------------------
+Unit <mips_display> synthesized (advanced).
+
+Synthesizing (advanced) Unit <regfile>.
+INFO:Xst:3031 - HDL ADVISOR - The RAM <Mram_regs> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 32-word x 32-bit                    |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     weA            | connected to signal <_and0000>      | high     |
+    |     addrA          | connected to signal <reg_write_addr> |          |
+    |     diA            | connected to signal <reg_write_data> |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 32-word x 32-bit                    |          |
+    |     addrB          | connected to signal <rs_addr>       |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+INFO:Xst:3031 - HDL ADVISOR - The RAM <Mram_regs_ren> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 32-word x 32-bit                    |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     weA            | connected to signal <_and0000>      | high     |
+    |     addrA          | connected to signal <reg_write_addr> |          |
+    |     diA            | connected to signal <reg_write_data> |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 32-word x 32-bit                    |          |
+    |     addrB          | connected to signal <rt_addr>       |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <regfile> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 5
+ 16384x32-bit single-port block RAM                    : 1
+ 2048x3-bit dual-port distributed RAM                  : 1
+ 32x32-bit dual-port distributed RAM                   : 2
+ 512x32-bit single-port block RAM                      : 1
+# ROMs                                                 : 3
+ 4x3-bit ROM                                           : 3
+# Adders/Subtractors                                   : 13
+ 10-bit adder carry out                                : 2
+ 11-bit adder                                          : 2
+ 20-bit adder                                          : 3
+ 27-bit adder                                          : 1
+ 32-bit adder                                          : 4
+ 32-bit addsub                                         : 1
+# Counters                                             : 7
+ 10-bit up counter                                     : 1
+ 11-bit up counter                                     : 3
+ 14-bit up counter                                     : 1
+ 3-bit up counter                                      : 1
+ 5-bit up counter                                      : 1
+# Registers                                            : 539
+ Flip-Flops                                            : 539
+# Comparators                                          : 35
+ 10-bit comparator greatequal                          : 2
+ 10-bit comparator greater                             : 1
+ 10-bit comparator less                                : 3
+ 11-bit comparator greatequal                          : 7
+ 11-bit comparator less                                : 4
+ 11-bit comparator lessequal                           : 2
+ 14-bit comparator greatequal                          : 1
+ 14-bit comparator lessequal                           : 1
+ 32-bit comparator equal                               : 1
+ 32-bit comparator less                                : 2
+ 5-bit comparator equal                                : 6
+ 5-bit comparator greatequal                           : 2
+ 5-bit comparator greater                              : 1
+ 5-bit comparator less                                 : 1
+ 5-bit comparator lessequal                            : 1
+# Multiplexers                                         : 1
+ 32-bit 15-to-1 multiplexer                            : 1
+# Logic shifters                                       : 3
+ 32-bit shifter arithmetic right                       : 1
+ 32-bit shifter logical left                           : 1
+ 32-bit shifter logical right                          : 1
+# Xors                                                 : 2
+ 1-bit xor2                                            : 1
+ 32-bit xor2                                           : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <mips_top> ...
+
+Optimizing unit <dffare_1> ...
+
+Optimizing unit <decode> ...
+
+Optimizing unit <dffarre_1> ...
+
+Optimizing unit <dffarre_2> ...
+
+Optimizing unit <dffarre_4> ...
+
+Optimizing unit <alu> ...
+
+Optimizing unit <regfile> ...
+
+Optimizing unit <chip_data_parser> ...
+
+Optimizing unit <debouncer> ...
+
+Optimizing unit <instruction_fetch> ...
+
+Optimizing unit <memory_top> ...
+
+Optimizing unit <mips_cpu> ...
+INFO:Xst:2399 - RAMs <mips_disp/Mram_block_colors22>, <mips_disp/Mram_block_colors23> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <mips_disp/Mram_block_colors22>, <mips_disp/Mram_block_colors24> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <mips_disp/Mram_block_colors22>, <mips_disp/Mram_block_colors25> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <mips_disp/Mram_block_colors22>, <mips_disp/Mram_block_colors26> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <mips_disp/Mram_block_colors22>, <mips_disp/Mram_block_colors29> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <mips_disp/Mram_block_colors22>, <mips_disp/Mram_block_colors27> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <mips_disp/Mram_block_colors22>, <mips_disp/Mram_block_colors28> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <mips_disp/Mram_block_colors22>, <mips_disp/Mram_block_colors30> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <mips_disp/Mram_block_colors22>, <mips_disp/Mram_block_colors31> are equivalent, second RAM is removed
+INFO:Xst:2399 - RAMs <mips_disp/Mram_block_colors22>, <mips_disp/Mram_block_colors32> are equivalent, second RAM is removed
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block mips_top, actual ratio is 2.
+
+Final Macro Processing ...
+
+Processing Unit <mips_top> :
+	Found 2-bit shift register for signal <trap_button_unit/sync/ff3/q_0>.
+	Found 2-bit shift register for signal <step_button_unit/sync/ff3/q_0>.
+	Found 2-bit shift register for signal <run_button_unit/sync/ff3/q_0>.
+Unit <mips_top> processed.
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 598
+ Flip-Flops                                            : 598
+# Shift Registers                                      : 3
+ 2-bit shift register                                  : 3
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : mips_top.ngr
+Top Level Output File Name         : mips_top
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 38
+
+Cell Usage :
+# BELS                             : 2197
+#      GND                         : 1
+#      INV                         : 17
+#      LUT1                        : 221
+#      LUT2                        : 48
+#      LUT3                        : 159
+#      LUT4                        : 176
+#      LUT5                        : 228
+#      LUT6                        : 666
+#      MUXCY                       : 324
+#      MUXF7                       : 61
+#      VCC                         : 1
+#      XORCY                       : 295
+# FlipFlops/Latches                : 601
+#      FD                          : 28
+#      FDC                         : 1
+#      FDCE                        : 314
+#      FDE                         : 3
+#      FDR                         : 110
+#      FDRE                        : 120
+#      FDS                         : 24
+#      FDSE                        : 1
+# RAMS                             : 53
+#      RAM32M                      : 10
+#      RAM32X1D                    : 4
+#      RAM64M                      : 22
+#      RAMB36_EXP                  : 17
+# Shift Registers                  : 3
+#      SRLC16E                     : 3
+# Clock Buffers                    : 2
+#      BUFG                        : 2
+# IO Buffers                       : 38
+#      IBUF                        : 14
+#      OBUF                        : 22
+#      OBUFT                       : 2
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 5vlx110tff1136-1 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             601  out of  69120     0%  
+ Number of Slice LUTs:                 1654  out of  69120     2%  
+    Number used as Logic:              1515  out of  69120     2%  
+    Number used as Memory:              139  out of  17920     0%  
+       Number used as RAM:              136
+       Number used as SRL:                3
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   1860
+   Number with an unused Flip Flop:    1259  out of   1860    67%  
+   Number with an unused LUT:           206  out of   1860    11%  
+   Number of fully used LUT-FF pairs:   395  out of   1860    21%  
+   Number of unique control sets:        27
+
+IO Utilization: 
+ Number of IOs:                          38
+ Number of bonded IOBs:                  38  out of    640     5%  
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:               17  out of    148    11%  
+    Number using Block RAM only:         17
+ Number of BUFG/BUFGCTRLs:                2  out of     32     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+---------------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)           | Load  |
+-----------------------------------+---------------------------------+-------+
+clk                                | IBUF+BUFG                       | 226   |
+clk_div/q_01                       | BUFG                            | 431   |
+N0                                 | NONE(cpu/m_stage/dmem/Mram_mem1)| 17    |
+-----------------------------------+---------------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+clk_div/r_inv(rst1:O)              | NONE(clk_div/q_0)      | 315   |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -1
+
+   Minimum period: 14.686ns (Maximum Frequency: 68.090MHz)
+   Minimum input arrival time before clock: 8.054ns
+   Maximum output required time after clock: 6.973ns
+   Maximum combinational path delay: 4.481ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 6.976ns (frequency: 143.349MHz)
+  Total number of paths / destination ports: 15185 / 491
+-------------------------------------------------------------------------
+Delay:               6.976ns (Levels of Logic = 7)
+  Source:            ctrl/gen_sync/y_7 (FF)
+  Destination:       ctrl/make_chip_data/pixel_23 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: ctrl/gen_sync/y_7 to ctrl/make_chip_data/pixel_23
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q            18   0.471   1.162  ctrl/gen_sync/y_7 (ctrl/gen_sync/y_7)
+     LUT6:I0->O            1   0.094   0.000  mips_disp/Madd_read_addr_cy<6>1_G (N704)
+     MUXF7:I1->O           7   0.254   1.006  mips_disp/Madd_read_addr_cy<6>1 (mips_disp/Madd_read_addr_cy<6>)
+     LUT6:I1->O           15   0.094   0.866  mips_disp/Madd_read_addr_xor<7>11 (mips_disp/read_addr<7>)
+     LUT6:I2->O            1   0.094   0.973  inst_LPM_MUX_92 (inst_LPM_MUX_92)
+     LUT6:I1->O            1   0.094   0.000  inst_LPM_MUX_4 (inst_LPM_MUX_4)
+     MUXF7:I0->O           1   0.251   0.576  inst_LPM_MUX_2_f7 (vga_rgb<0>)
+     LUT6:I4->O            8   0.094   0.374  _AUX_1<0>2 (N261)
+     FDS:S                     0.573          ctrl/make_chip_data/pixel_7
+    ----------------------------------------
+    Total                      6.976ns (2.019ns logic, 4.957ns route)
+                                       (28.9% logic, 71.1% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_div/q_01'
+  Clock period: 14.686ns (frequency: 68.090MHz)
+  Total number of paths / destination ports: 11282712 / 1551
+-------------------------------------------------------------------------
+Delay:               7.343ns (Levels of Logic = 17)
+  Source:            cpu/m_stage/dmem/Mram_mem1 (RAM)
+  Destination:       cpu/if_stage/pc_reg/q_31 (FF)
+  Source Clock:      clk_div/q_01 falling
+  Destination Clock: clk_div/q_01 rising
+
+  Data Path: cpu/m_stage/dmem/Mram_mem1 to cpu/if_stage/pc_reg/q_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     RAMB36_EXP:REGCLKAL->DOA0    3   2.180   0.491  cpu/m_stage/dmem/Mram_mem1 (cpu/m_stage/mem_read_data<0>)
+     LUT6:I5->O            4   0.094   1.085  cpu/d_stage/rs_data<0>1 (cpu/jr_pc_id<0>)
+     LUT6:I0->O            1   0.094   0.000  cpu/d_stage/Mcompar_isEqual_lut<0> (cpu/d_stage/Mcompar_isEqual_lut<0>)
+     MUXCY:S->O            1   0.372   0.000  cpu/d_stage/Mcompar_isEqual_cy<0> (cpu/d_stage/Mcompar_isEqual_cy<0>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<1> (cpu/d_stage/Mcompar_isEqual_cy<1>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<2> (cpu/d_stage/Mcompar_isEqual_cy<2>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<3> (cpu/d_stage/Mcompar_isEqual_cy<3>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<4> (cpu/d_stage/Mcompar_isEqual_cy<4>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<5> (cpu/d_stage/Mcompar_isEqual_cy<5>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<6> (cpu/d_stage/Mcompar_isEqual_cy<6>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<7> (cpu/d_stage/Mcompar_isEqual_cy<7>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<8> (cpu/d_stage/Mcompar_isEqual_cy<8>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<9> (cpu/d_stage/Mcompar_isEqual_cy<9>)
+     MUXCY:CI->O           2   0.254   0.485  cpu/d_stage/Mcompar_isEqual_cy<10> (cpu/d_stage/isEqual)
+     LUT6:I5->O            4   0.094   0.592  cpu/d_stage/jump_branch_SW1 (N228)
+     LUT6:I4->O           26   0.094   0.606  cpu/d_stage/jump_branch_1 (cpu/d_stage/jump_branch)
+     LUT6:I5->O            1   0.094   0.480  cpu/if_stage/pc_next<5>_SW0_SW0 (N2811)
+     LUT5:I4->O            1   0.094   0.000  cpu/if_stage/pc_next<5> (cpu/if_stage/pc_next<5>)
+     FDCE:D                   -0.018          cpu/if_stage/pc_reg/q_5
+    ----------------------------------------
+    Total                      7.343ns (3.604ns logic, 3.739ns route)
+                                       (49.1% logic, 50.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 1599 / 218
+-------------------------------------------------------------------------
+Offset:              5.298ns (Levels of Logic = 5)
+  Source:            sw<2> (PAD)
+  Destination:       ctrl/gen_sync/x_0 (FF)
+  Destination Clock: clk rising
+
+  Data Path: sw<2> to ctrl/gen_sync/x_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   0.818   0.710  sw_2_IBUF (sw_2_IBUF)
+     LUT3:I0->O            1   0.094   0.480  _mux0000<0>1_SW0 (N46)
+     LUT6:I5->O           23   0.094   0.693  _mux0000<0>1 (N113)
+     LUT2:I0->O          359   0.094   1.257  rst1 (clk_div/r_inv)
+     LUT6:I0->O           11   0.094   0.391  ctrl/gen_sync/x_or0000 (ctrl/gen_sync/x_or0000)
+     FDR:R                     0.573          ctrl/gen_sync/x_0
+    ----------------------------------------
+    Total                      5.298ns (1.767ns logic, 3.531ns route)
+                                       (33.4% logic, 66.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_div/q_01'
+  Total number of paths / destination ports: 15300 / 48
+-------------------------------------------------------------------------
+Offset:              8.054ns (Levels of Logic = 20)
+  Source:            sw<2> (PAD)
+  Destination:       cpu/if_stage/pc_reg/q_31 (FF)
+  Destination Clock: clk_div/q_01 rising
+
+  Data Path: sw<2> to cpu/if_stage/pc_reg/q_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   0.818   0.710  sw_2_IBUF (sw_2_IBUF)
+     LUT3:I0->O            1   0.094   0.480  _mux0000<0>1_SW0 (N46)
+     LUT6:I5->O           23   0.094   1.186  _mux0000<0>1 (N113)
+     LUT6:I0->O            4   0.094   1.085  cpu/d_stage/rs_data<0>1 (cpu/jr_pc_id<0>)
+     LUT6:I0->O            1   0.094   0.000  cpu/d_stage/Mcompar_isEqual_lut<0> (cpu/d_stage/Mcompar_isEqual_lut<0>)
+     MUXCY:S->O            1   0.372   0.000  cpu/d_stage/Mcompar_isEqual_cy<0> (cpu/d_stage/Mcompar_isEqual_cy<0>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<1> (cpu/d_stage/Mcompar_isEqual_cy<1>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<2> (cpu/d_stage/Mcompar_isEqual_cy<2>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<3> (cpu/d_stage/Mcompar_isEqual_cy<3>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<4> (cpu/d_stage/Mcompar_isEqual_cy<4>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<5> (cpu/d_stage/Mcompar_isEqual_cy<5>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<6> (cpu/d_stage/Mcompar_isEqual_cy<6>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<7> (cpu/d_stage/Mcompar_isEqual_cy<7>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<8> (cpu/d_stage/Mcompar_isEqual_cy<8>)
+     MUXCY:CI->O           1   0.026   0.000  cpu/d_stage/Mcompar_isEqual_cy<9> (cpu/d_stage/Mcompar_isEqual_cy<9>)
+     MUXCY:CI->O           2   0.254   0.485  cpu/d_stage/Mcompar_isEqual_cy<10> (cpu/d_stage/isEqual)
+     LUT6:I5->O            4   0.094   0.592  cpu/d_stage/jump_branch_SW1 (N228)
+     LUT6:I4->O           26   0.094   0.606  cpu/d_stage/jump_branch_1 (cpu/d_stage/jump_branch)
+     LUT6:I5->O            1   0.094   0.480  cpu/if_stage/pc_next<5>_SW0_SW0 (N2811)
+     LUT5:I4->O            1   0.094   0.000  cpu/if_stage/pc_next<5> (cpu/if_stage/pc_next<5>)
+     FDCE:D                   -0.018          cpu/if_stage/pc_reg/q_5
+    ----------------------------------------
+    Total                      8.054ns (2.430ns logic, 5.624ns route)
+                                       (30.2% logic, 69.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 72 / 21
+-------------------------------------------------------------------------
+Offset:              6.973ns (Levels of Logic = 5)
+  Source:            i2c_controller/scl_counter_3 (FF)
+  Destination:       scl (PAD)
+  Source Clock:      clk rising
+
+  Data Path: i2c_controller/scl_counter_3 to scl
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              5   0.471   0.995  i2c_controller/scl_counter_3 (i2c_controller/scl_counter_3)
+     LUT5:I0->O            1   0.094   0.789  i2c_controller/sda_logic_mux0000433 (i2c_controller/sda_logic_mux0000433)
+     LUT6:I2->O            1   0.094   0.576  i2c_controller/sda_logic_mux0000466 (i2c_controller/sda_logic_mux0000466)
+     LUT4:I2->O            2   0.094   0.978  i2c_controller/sda_logic_mux00004102 (N59)
+     LUT6:I1->O            1   0.094   0.336  i2c_controller/scl_logic1 (i2c_controller/scl_logic)
+     OBUFT:T->O                2.452          scl_OBUFT (scl)
+    ----------------------------------------
+    Total                      6.973ns (3.299ns logic, 3.674ns route)
+                                       (47.3% logic, 52.7% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 14 / 14
+-------------------------------------------------------------------------
+Delay:               4.481ns (Levels of Logic = 3)
+  Source:            clk (PAD)
+  Destination:       chip_data<11> (PAD)
+
+  Data Path: clk to chip_data<11>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            14   0.818   0.781  clk_IBUF (clk_IBUF1)
+     LUT3:I0->O            1   0.094   0.336  ctrl/make_chip_data/chip_data<9>1 (chip_data_9_OBUF)
+     OBUF:I->O                 2.452          chip_data_9_OBUF (chip_data<9>)
+    ----------------------------------------
+    Total                      4.481ns (3.364ns logic, 1.117ns route)
+                                       (75.1% logic, 24.9% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 33.00 secs
+Total CPU time to Xst completion: 31.68 secs
+ 
+--> 
+
+
+Total memory usage is 209072 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :   18 (   0 filtered)
+

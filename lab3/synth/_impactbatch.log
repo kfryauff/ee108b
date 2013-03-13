@@ -1,0 +1,136 @@
+iMPACT Version: Jun 22 2010 00:07:57
+
+iMPACT log file Started on Wed Feb 27 10:03:39 2013
+
+Preference Table
+Name                 Setting             
+StartupClock         Auto_Correction     
+AutoSignature        False               
+KeepSVF              False               
+ConcurrentMode       False               
+UseHighz             False               
+ConfigOnFailure      Stop                
+UserLevel            Novice              
+MessageLevel         Detailed            
+svfUseTime           false               
+SpiByteSwap          Auto_Correction     
+AutoInfer            false               
+SvfPlayDisplayComments false               
+Enumerating cables. Please wait.
+Reusing A0008001 key.
+Reusing 24008001 key.
+ Cable is LOCKED. Retrying...
+ The cable is being used by another application.
+ Please try opening the cable connection at a later time.
+=======================================================
+Cable is already locked in port usb21.
+=======================================================
+Reusing A1008001 key.
+Reusing 25008001 key.
+ OS platform = i686.
+ Using windrvr6 driver.
+Connecting to cable (Usb Port - USB22).
+Checking cable driver.
+File version of /opt/xilinx/ISE_DS/ISE/bin/lin/xusbdfwu.hex = 1030.
+File version of /usr/share/xusbdfwu.hex = 1030.
+ libusb-driver.so version: 2011-12-12 07:47:45.
+ERROR:iMPACT - Cable not found, ESN: 00000000000000
+INFO:iMPACT - Failed to open file: -- File ? --, replace with 'bypass'.
+INFO:iMPACT:1777 - 
+   Reading /opt/xilinx/ISE_DS/ISE/xcfp/data/xcf32p.bsd...
+INFO:iMPACT:501 - '1': Added Device xcf32p successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+INFO:iMPACT:1835 - Loading CFI file -- File ? --.cfi
+Revision information not found, proceed with device default setting.
+INFO:iMPACT - Failed to open file: -- File ? --, replace with 'bypass'.
+INFO:iMPACT:501 - '2': Added Device xcf32p successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+INFO:iMPACT:1835 - Loading CFI file -- File ? --.cfi
+Revision information not found, proceed with device default setting.
+INFO:iMPACT - Failed to open file: -- File ? --, replace with 'bypass'.
+INFO:iMPACT:1777 - 
+   Reading /opt/xilinx/ISE_DS/ISE/xc9500xl/data/xc95144xl.bsd...
+INFO:iMPACT:501 - '3': Added Device xc95144xl successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+INFO:iMPACT - Failed to open file: -- File ? --, replace with 'bypass'.
+INFO:iMPACT:1777 - 
+   Reading /opt/xilinx/ISE_DS/ISE/acecf/data/xccace.bsd...
+INFO:iMPACT:501 - '4': Added Device xccace successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+'5': Loading file'/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab3/synth/mips_top.bit' ...
+done.
+INFO:iMPACT:1777 - 
+   Reading /opt/xilinx/ISE_DS/ISE/virtex5/data/xc5vlx110t.bsd...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+UserID read from the bitstream file = 0xFFFFFFFF.
+INFO:iMPACT:501 - '5': Added Device xc5vlx110t successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Active mode is BS
+AutoDetecting cable. Please wait.
+Reusing A0008001 key.
+Reusing 24008001 key.
+ Cable is LOCKED. Retrying...
+ The cable is being used by another application.
+ Please try opening the cable connection at a later time.
+Reusing 78008001 key.
+Reusing FC008001 key.
+ OS platform = i686.
+Connecting to cable (Parallel Port - parport0).
+ libusb-driver.so version: 2011-12-12 07:47:45.
+ parport0: 
+ parport1: 
+ parport2: 
+ parport3: 
+ LPT1 Base Address set from env variable = 0.
+ LPT base address = 0000h.
+ LPT1 Ecp Address set from env variable = 400.
+ ECP base address = 0400h.
+Cable connection failed.
+Reusing 79008001 key.
+Reusing FD008001 key.
+ OS platform = i686.
+Connecting to cable (Parallel Port - parport1).
+ libusb-driver.so version: 2011-12-12 07:47:45.
+ LPT2 Base Address set from env variable = 10.
+ LPT base address = 0010h.
+ LPT2 Ecp Address set from env variable = 410.
+ ECP base address = 0410h.
+LPT port is already in use. rc = FFFFFFFFh
+Cable connection failed.
+Reusing 7A008001 key.
+Reusing FE008001 key.
+ OS platform = i686.
+Connecting to cable (Parallel Port - parport2).
+ libusb-driver.so version: 2011-12-12 07:47:45.
+ LPT3 Base Address set from env variable = 20.
+ LPT base address = 0020h.
+ LPT3 Ecp Address set from env variable = 420.
+ ECP base address = 0420h.
+LPT port is already in use. rc = FFFFFFFFh
+Cable connection failed.
+Reusing 7B008001 key.
+Reusing FF008001 key.
+ OS platform = i686.
+Connecting to cable (Parallel Port - parport3).
+ libusb-driver.so version: 2011-12-12 07:47:45.
+ LPT4 Base Address set from env variable = 30.
+ LPT base address = 0030h.
+ LPT4 Ecp Address set from env variable = 430.
+ ECP base address = 0430h.
+LPT port is already in use. rc = FFFFFFFFh
+Cable connection failed.
+Cable autodetection failed.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+----------------------------------------------------------------------

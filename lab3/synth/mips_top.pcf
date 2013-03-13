@@ -1,0 +1,197 @@
+//! **************************************************************************
+// Written by: Map M.63c on Wed Feb 27 09:33:17 2013
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "top_btn" LOCATE = SITE "U8" LEVEL 1;
+COMP "sw<0>" LOCATE = SITE "U25" LEVEL 1;
+COMP "sw<1>" LOCATE = SITE "AG27" LEVEL 1;
+COMP "sw<2>" LOCATE = SITE "AF25" LEVEL 1;
+COMP "sw<3>" LOCATE = SITE "AF26" LEVEL 1;
+COMP "sw<4>" LOCATE = SITE "AE27" LEVEL 1;
+COMP "sw<5>" LOCATE = SITE "AE26" LEVEL 1;
+COMP "sw<6>" LOCATE = SITE "AC25" LEVEL 1;
+COMP "sw<7>" LOCATE = SITE "AC24" LEVEL 1;
+COMP "chip_data<10>" LOCATE = SITE "AP14" LEVEL 1;
+COMP "chip_data<11>" LOCATE = SITE "AN14" LEVEL 1;
+COMP "right_btn" LOCATE = SITE "AK7" LEVEL 1;
+COMP "chip_hsync" LOCATE = SITE "AM12" LEVEL 1;
+COMP "chip_reset" LOCATE = SITE "AK6" LEVEL 1;
+COMP "chip_vsync" LOCATE = SITE "AM11" LEVEL 1;
+COMP "chip_data<0>" LOCATE = SITE "AB8" LEVEL 1;
+COMP "left_btn" LOCATE = SITE "AJ7" LEVEL 1;
+COMP "chip_data<1>" LOCATE = SITE "AC8" LEVEL 1;
+COMP "xclk" LOCATE = SITE "AL11" LEVEL 1;
+COMP "chip_data<2>" LOCATE = SITE "AN12" LEVEL 1;
+COMP "center_btn" LOCATE = SITE "AJ6" LEVEL 1;
+COMP "chip_data<3>" LOCATE = SITE "AP12" LEVEL 1;
+COMP "chip_data<4>" LOCATE = SITE "AA9" LEVEL 1;
+COMP "chip_data<5>" LOCATE = SITE "AA8" LEVEL 1;
+COMP "chip_data<6>" LOCATE = SITE "AM13" LEVEL 1;
+COMP "chip_data<7>" LOCATE = SITE "AN13" LEVEL 1;
+COMP "chip_data<8>" LOCATE = SITE "AA10" LEVEL 1;
+COMP "chip_data<9>" LOCATE = SITE "AB10" LEVEL 1;
+COMP "bottom_btn" LOCATE = SITE "V8" LEVEL 1;
+COMP "chip_data_enable" LOCATE = SITE "AE8" LEVEL 1;
+COMP "clk" LOCATE = SITE "AH15" LEVEL 1;
+COMP "sda" LOCATE = SITE "T29" LEVEL 1;
+COMP "scl" LOCATE = SITE "U27" LEVEL 1;
+COMP "leds<0>" LOCATE = SITE "AD26" LEVEL 1;
+COMP "leds<1>" LOCATE = SITE "G15" LEVEL 1;
+COMP "leds<2>" LOCATE = SITE "L18" LEVEL 1;
+COMP "leds<3>" LOCATE = SITE "H18" LEVEL 1;
+COMP "xclk_n" LOCATE = SITE "AL10" LEVEL 1;
+TIMEGRP clock = BEL "led_div/q_0" BEL "led_div/q_1" BEL "led_div/q_2" BEL
+        "led_div/q_3" BEL "led_div/q_4" BEL "led_div/q_5" BEL "led_div/q_6"
+        BEL "led_div/q_7" BEL "led_div/q_8" BEL "led_div/q_9" BEL
+        "led_div/q_10" BEL "led_div/q_11" BEL "led_div/q_12" BEL
+        "led_div/q_13" BEL "led_div/q_14" BEL "led_div/q_15" BEL
+        "led_div/q_16" BEL "led_div/q_17" BEL "led_div/q_18" BEL
+        "led_div/q_19" BEL "led_div/q_20" BEL "led_div/q_21" BEL
+        "led_div/q_22" BEL "led_div/q_23" BEL "led_div/q_24" BEL
+        "led_div/q_25" BEL "led_div/q_26" BEL "run_dff/q_0" BEL "clk_div/q_0"
+        BEL "trap_button_unit/one_pulse/last_value_storage/q_0" BEL
+        "step_button_unit/one_pulse/last_value_storage/q_0" BEL
+        "run_button_unit/one_pulse/last_value_storage/q_0" BEL
+        "i2c_controller/sda_logic" BEL "i2c_controller/sda_shift_27" BEL
+        "i2c_controller/sda_shift_26" BEL "i2c_controller/sda_shift_25" BEL
+        "i2c_controller/sda_shift_24" BEL "i2c_controller/sda_shift_23" BEL
+        "i2c_controller/sda_shift_22" BEL "i2c_controller/sda_shift_21" BEL
+        "i2c_controller/sda_shift_20" BEL "i2c_controller/sda_shift_19" BEL
+        "i2c_controller/sda_shift_18" BEL "i2c_controller/sda_shift_17" BEL
+        "i2c_controller/sda_shift_16" BEL "i2c_controller/sda_shift_15" BEL
+        "i2c_controller/sda_shift_14" BEL "i2c_controller/sda_shift_13" BEL
+        "i2c_controller/sda_shift_12" BEL "i2c_controller/sda_shift_11" BEL
+        "i2c_controller/sda_shift_10" BEL "i2c_controller/sda_shift_9" BEL
+        "i2c_controller/sda_shift_8" BEL "i2c_controller/sda_shift_7" BEL
+        "i2c_controller/sda_shift_6" BEL "i2c_controller/sda_shift_5" BEL
+        "i2c_controller/sda_shift_4" BEL "i2c_controller/sda_shift_3" BEL
+        "i2c_controller/sda_shift_2" BEL "i2c_controller/sda_shift_1" BEL
+        "i2c_controller/sda_shift_0" BEL "i2c_controller/packet_index_0" BEL
+        "i2c_controller/packet_index_1" BEL "i2c_controller/packet_index_2"
+        BEL "i2c_controller/state_0" BEL "i2c_controller/state_1" BEL
+        "i2c_controller/state_2" BEL "i2c_controller/state_3" BEL
+        "i2c_controller/state_4" BEL "i2c_controller/scl_counter_0" BEL
+        "i2c_controller/scl_counter_1" BEL "i2c_controller/scl_counter_2" BEL
+        "i2c_controller/scl_counter_3" BEL "i2c_controller/scl_counter_4" BEL
+        "i2c_controller/scl_counter_5" BEL "i2c_controller/scl_counter_6" BEL
+        "i2c_controller/scl_counter_7" BEL "i2c_controller/scl_counter_8" BEL
+        "i2c_controller/scl_counter_9" BEL "i2c_controller/scl_counter_10" BEL
+        "i2c_controller/scl_counter_11" BEL "i2c_controller/scl_counter_12"
+        BEL "i2c_controller/scl_counter_13" BEL "ctrl/gen_sync/y_0" BEL
+        "ctrl/gen_sync/y_1" BEL "ctrl/gen_sync/y_2" BEL "ctrl/gen_sync/y_3"
+        BEL "ctrl/gen_sync/y_4" BEL "ctrl/gen_sync/y_5" BEL
+        "ctrl/gen_sync/y_6" BEL "ctrl/gen_sync/y_7" BEL "ctrl/gen_sync/y_8"
+        BEL "ctrl/gen_sync/y_9" BEL "ctrl/gen_sync/pixel_counter_0" BEL
+        "ctrl/gen_sync/pixel_counter_1" BEL "ctrl/gen_sync/pixel_counter_2"
+        BEL "ctrl/gen_sync/pixel_counter_3" BEL
+        "ctrl/gen_sync/pixel_counter_4" BEL "ctrl/gen_sync/pixel_counter_5"
+        BEL "ctrl/gen_sync/pixel_counter_6" BEL
+        "ctrl/gen_sync/pixel_counter_7" BEL "ctrl/gen_sync/pixel_counter_8"
+        BEL "ctrl/gen_sync/pixel_counter_9" BEL
+        "ctrl/gen_sync/pixel_counter_10" BEL "ctrl/gen_sync/x_0" BEL
+        "ctrl/gen_sync/x_1" BEL "ctrl/gen_sync/x_2" BEL "ctrl/gen_sync/x_3"
+        BEL "ctrl/gen_sync/x_4" BEL "ctrl/gen_sync/x_5" BEL
+        "ctrl/gen_sync/x_6" BEL "ctrl/gen_sync/x_7" BEL "ctrl/gen_sync/x_8"
+        BEL "ctrl/gen_sync/x_9" BEL "ctrl/gen_sync/x_10" BEL
+        "ctrl/gen_sync/hsync_counter_0" BEL "ctrl/gen_sync/hsync_counter_1"
+        BEL "ctrl/gen_sync/hsync_counter_2" BEL
+        "ctrl/gen_sync/hsync_counter_3" BEL "ctrl/gen_sync/hsync_counter_4"
+        BEL "ctrl/gen_sync/hsync_counter_5" BEL
+        "ctrl/gen_sync/hsync_counter_6" BEL "ctrl/gen_sync/hsync_counter_7"
+        BEL "ctrl/gen_sync/hsync_counter_8" BEL
+        "ctrl/gen_sync/hsync_counter_9" BEL "ctrl/gen_sync/hsync_counter_10"
+        BEL "ctrl/make_chip_data/chip_data_enable" BEL
+        "run_button_unit/debounce/state/q_0" BEL
+        "run_button_unit/debounce/counter/q_19" BEL
+        "run_button_unit/debounce/counter/q_18" BEL
+        "run_button_unit/debounce/counter/q_17" BEL
+        "run_button_unit/debounce/counter/q_16" BEL
+        "run_button_unit/debounce/counter/q_15" BEL
+        "run_button_unit/debounce/counter/q_14" BEL
+        "run_button_unit/debounce/counter/q_13" BEL
+        "run_button_unit/debounce/counter/q_12" BEL
+        "run_button_unit/debounce/counter/q_11" BEL
+        "run_button_unit/debounce/counter/q_10" BEL
+        "run_button_unit/debounce/counter/q_9" BEL
+        "run_button_unit/debounce/counter/q_8" BEL
+        "run_button_unit/debounce/counter/q_7" BEL
+        "run_button_unit/debounce/counter/q_6" BEL
+        "run_button_unit/debounce/counter/q_5" BEL
+        "run_button_unit/debounce/counter/q_4" BEL
+        "run_button_unit/debounce/counter/q_3" BEL
+        "run_button_unit/debounce/counter/q_2" BEL
+        "run_button_unit/debounce/counter/q_1" BEL
+        "run_button_unit/debounce/counter/q_0" BEL
+        "step_button_unit/debounce/state/q_0" BEL
+        "step_button_unit/debounce/counter/q_19" BEL
+        "step_button_unit/debounce/counter/q_18" BEL
+        "step_button_unit/debounce/counter/q_17" BEL
+        "step_button_unit/debounce/counter/q_16" BEL
+        "step_button_unit/debounce/counter/q_15" BEL
+        "step_button_unit/debounce/counter/q_14" BEL
+        "step_button_unit/debounce/counter/q_13" BEL
+        "step_button_unit/debounce/counter/q_12" BEL
+        "step_button_unit/debounce/counter/q_11" BEL
+        "step_button_unit/debounce/counter/q_10" BEL
+        "step_button_unit/debounce/counter/q_9" BEL
+        "step_button_unit/debounce/counter/q_8" BEL
+        "step_button_unit/debounce/counter/q_7" BEL
+        "step_button_unit/debounce/counter/q_6" BEL
+        "step_button_unit/debounce/counter/q_5" BEL
+        "step_button_unit/debounce/counter/q_4" BEL
+        "step_button_unit/debounce/counter/q_3" BEL
+        "step_button_unit/debounce/counter/q_2" BEL
+        "step_button_unit/debounce/counter/q_1" BEL
+        "step_button_unit/debounce/counter/q_0" BEL
+        "trap_button_unit/debounce/state/q_0" BEL
+        "trap_button_unit/debounce/counter/q_19" BEL
+        "trap_button_unit/debounce/counter/q_18" BEL
+        "trap_button_unit/debounce/counter/q_17" BEL
+        "trap_button_unit/debounce/counter/q_16" BEL
+        "trap_button_unit/debounce/counter/q_15" BEL
+        "trap_button_unit/debounce/counter/q_14" BEL
+        "trap_button_unit/debounce/counter/q_13" BEL
+        "trap_button_unit/debounce/counter/q_12" BEL
+        "trap_button_unit/debounce/counter/q_11" BEL
+        "trap_button_unit/debounce/counter/q_10" BEL
+        "trap_button_unit/debounce/counter/q_9" BEL
+        "trap_button_unit/debounce/counter/q_8" BEL
+        "trap_button_unit/debounce/counter/q_7" BEL
+        "trap_button_unit/debounce/counter/q_6" BEL
+        "trap_button_unit/debounce/counter/q_5" BEL
+        "trap_button_unit/debounce/counter/q_4" BEL
+        "trap_button_unit/debounce/counter/q_3" BEL
+        "trap_button_unit/debounce/counter/q_2" BEL
+        "trap_button_unit/debounce/counter/q_1" BEL
+        "trap_button_unit/debounce/counter/q_0" BEL
+        "trap_button_unit/sync/ff1/q_0" BEL "step_button_unit/sync/ff1/q_0"
+        BEL "run_button_unit/sync/ff1/q_0" BEL "ctrl/make_chip_data/pixel_23"
+        BEL "ctrl/make_chip_data/pixel_22" BEL "ctrl/make_chip_data/pixel_21"
+        BEL "ctrl/make_chip_data/pixel_20" BEL "ctrl/make_chip_data/pixel_19"
+        BEL "ctrl/make_chip_data/pixel_18" BEL "ctrl/make_chip_data/pixel_17"
+        BEL "ctrl/make_chip_data/pixel_16" BEL "ctrl/make_chip_data/pixel_15"
+        BEL "ctrl/make_chip_data/pixel_14" BEL "ctrl/make_chip_data/pixel_13"
+        BEL "ctrl/make_chip_data/pixel_12" BEL "ctrl/make_chip_data/pixel_11"
+        BEL "ctrl/make_chip_data/pixel_10" BEL "ctrl/make_chip_data/pixel_9"
+        BEL "ctrl/make_chip_data/pixel_8" BEL "ctrl/make_chip_data/pixel_7"
+        BEL "ctrl/make_chip_data/pixel_6" BEL "ctrl/make_chip_data/pixel_5"
+        BEL "ctrl/make_chip_data/pixel_4" BEL "ctrl/make_chip_data/pixel_3"
+        BEL "ctrl/make_chip_data/pixel_2" BEL "ctrl/make_chip_data/pixel_1"
+        BEL "ctrl/make_chip_data/pixel_0" BEL
+        "run_button_unit/debounce/state/q_1" BEL
+        "step_button_unit/debounce/state/q_1" BEL
+        "trap_button_unit/debounce/state/q_1" BEL "clk_IBUF_BUFG" BEL
+        "run_button_unit/sync/ff3/Mshreg_q_0" BEL
+        "run_button_unit/sync/ff3/q_0" BEL
+        "trap_button_unit/sync/ff3/Mshreg_q_0" BEL
+        "trap_button_unit/sync/ff3/q_0" BEL
+        "step_button_unit/sync/ff3/Mshreg_q_0" BEL
+        "step_button_unit/sync/ff3/q_0" BEL "chip_data<0>" BEL "chip_data<10>"
+        BEL "chip_data<11>" BEL "chip_data<1>" BEL "chip_data<2>" BEL
+        "chip_data<3>" BEL "chip_data<4>" BEL "chip_data<5>" BEL
+        "chip_data<6>" BEL "chip_data<7>" BEL "chip_data<8>" BEL
+        "chip_data<9>" BEL "xclk" BEL "xclk_n";
+TS_clock = PERIOD TIMEGRP "clock" 10 ns HIGH 50%;
+SCHEMATIC END;
+

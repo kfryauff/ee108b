@@ -1,0 +1,53 @@
+# Clock
+NET "clk" LOC = "AH15";
+NET "clk" TNM_NET = "clock";
+TIMESPEC "TS_clock" = PERIOD "clock" 10 ns HIGH 50 %;
+
+# DVI
+NET "xclk" LOC = "AL11";
+NET "xclk_n" LOC = "AL10";
+NET "chip_data_enable" LOC = "AE8";
+NET "chip_hsync" LOC = "AM12";
+NET "chip_vsync" LOC = "AM11";
+NET "chip_reset" LOC = "AK6";
+
+NET "chip_data<0>" LOC = "AB8";
+NET "chip_data<1>" LOC = "AC8";
+NET "chip_data<2>" LOC = "AN12";
+NET "chip_data<3>" LOC = "AP12";
+NET "chip_data<4>" LOC = "AA9";
+NET "chip_data<5>" LOC = "AA8";
+NET "chip_data<6>" LOC = "AM13";
+NET "chip_data<7>" LOC = "AN13";
+NET "chip_data<8>" LOC = "AA10";
+NET "chip_data<9>" LOC = "AB10";
+NET "chip_data<10>" LOC = "AP14";
+NET "chip_data<11>" LOC = "AN14";
+
+
+# I2C
+NET "scl" LOC = "U27";
+NET "sda" LOC = "T29";
+
+# buttons
+NET "top_btn" LOC = "U8";
+NET "bottom_btn" LOC = "V8";
+NET "left_btn" LOC = "AJ7";
+NET "center_btn" LOC = "AJ6";
+NET "right_btn" LOC = "AK7";
+
+# DIP switch
+NET "sw<0>" LOC = "U25";
+NET "sw<1>" LOC = "AG27";
+NET "sw<2>" LOC = "AF25";
+NET "sw<3>" LOC = "AF26";
+NET "sw<4>" LOC = "AE27";
+NET "sw<5>" LOC = "AE26";
+NET "sw<6>" LOC = "AC25";
+NET "sw<7>" LOC = "AC24";
+
+# leds out
+NET "leds<0>" LOC = "AD26";
+NET "leds<1>" LOC = "G15";
+NET "leds<2>" LOC = "L18";
+NET "leds<3>" LOC = "H18";
