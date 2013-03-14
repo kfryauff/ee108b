@@ -1,17 +1,19 @@
 [*]
-[*] GTKWave Analyzer v3.3.37 (w)1999-2012 BSI
-[*] Tue Nov 13 15:42:01 2012
+[*] GTKWave Analyzer v3.3.29 (w)1999-2012 BSI
+[*] Thu Mar 14 18:42:22 2013
 [*]
-[dumpfile] "/Users/chris/Documents/Stanford/12-13/Autumn/EE108B_CA/lab2_sol/mipstest.vcd"
-[dumpfile_mtime] "Tue Nov 13 15:38:25 2012"
-[dumpfile_size] 1243941
-[savefile] "/Users/chris/Documents/Stanford/12-13/Autumn/EE108B_CA/lab2_sol/waveformat.gtkw"
-[timestart] 65
-[size] 1680 923
+[dumpfile] "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab4/mipstest.vcd"
+[dumpfile_mtime] "Thu Mar 14 18:40:30 2013"
+[dumpfile_size] 407969
+[savefile] "/afs/ir.stanford.edu/users/d/h/dhau/ee108b/ee108b/lab4/waveformat.gtkw"
+[timestart] 0
+[size] 1270 945
 [pos] -1 -1
-*-4.778754 22 22 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-6.778754 22 22 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] mips_testbench.
 [treeopen] mips_testbench.dut.
+[treeopen] mips_testbench.dut.cpu.
+[treeopen] mips_testbench.dut.cpu.m_stage.
 [sst_width] 232
 [signals_width] 286
 [sst_expanded] 1
@@ -22,6 +24,8 @@ mips_testbench.dut.cpu.clk
 mips_testbench.dut.cpu.en
 @24
 mips_testbench.dut.cpu.pc[31:0]
+@29
+mips_testbench.dut.cpu.m_stage.data_cache.cache_hit
 @22
 mips_testbench.dut.cpu.instr[31:0]
 mips_testbench.dut.cpu.d_stage.op[5:0]

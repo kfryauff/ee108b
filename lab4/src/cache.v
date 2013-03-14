@@ -39,9 +39,18 @@ module cache (
     reg [127:0] dram_in;
     reg [31:0] cache_dout;
     reg cache_complete;
-	reg [5:0] index;
+    wire [5:0] index = addr[9:4];
     reg [127:0] block;
-	wire [1:0] block_start = addr[3:2];
+    wire [1:0] block_start = addr[3:2];
+
+	integer i;
+	initial begin
+		for (i = 0; i <= 63; i = i+1) begin
+			valid_bits [i] = 1'b0;
+			tag_bits [i] = 22'b0;
+			data_blocks [i] = 128'b0;
+		end
+	end
 
     /* Need to account for:
      * re 
@@ -65,8 +74,13 @@ module cache (
     // is tag_bits == addr[31:8]
     wire cache_hit = (valid_bits[index] == 1'b1) && (tag_bits[index] == addr[31:10]); 
 
-    always @(posedge clk) begin
-        index = addr[9:4];
+    always @(posedge clk or negedge rst) begin
+	if (~rst) begin
+	    dram_in <= 128'b0;
+	    cache_dout <= 32'b0;
+	    cache_complete <= 1'b1;
+	    block <= 128'b0;
+	end
         // if (re)  //reading
         if ( re == 1'b1 ) begin
             //dram_we = 1b'0;
