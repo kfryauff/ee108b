@@ -70,16 +70,16 @@ module cache (
         // if (re)  //reading
         if ( re == 1'b1 ) begin
             //dram_we = 1b'0;
-            dram_we <= 1'b0;
+            dram_we = 1'b0;
             //not in cache // (miss)
             if ( cache_hit == 1'b0 ) begin
-                dram_re <= 1'b1;
+                dram_re = 1'b1;
                 //set cache
-                    valid_bits[index] <= 1;
-                    tag_bits[index] <= addr[31:9];
-                    data_blocks[index] <= dram_out;
-                cache_dout <= dram_out;
-                cache_complete <= dram_complete;
+                    valid_bits[index] = 1;
+                    tag_bits[index] = addr[31:9];
+                    data_blocks[index] = dram_out;
+                cache_dout = dram_out;
+                cache_complete = dram_complete;
             end
 				
             //in cache // (hit)
