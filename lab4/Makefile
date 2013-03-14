@@ -16,8 +16,14 @@ wave: test
 textbench:
 	iverilog -Wall -o mipstest -ysrc -ylib -Iinclude sim/mips_testbench_text.v
 
+textbench2:
+	iverilog -Wall -o mipstest -ysrc -ylib -Iinclude sim/mips_testbench_text2.v
+
 # run the text output testbench
 text: clean textbench
+	./mipstest <<< "finish"
+
+text2: clean textbench2
 	./mipstest <<< "finish"
 
 # build using the very long testbench
